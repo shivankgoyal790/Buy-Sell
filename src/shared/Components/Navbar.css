@@ -1,0 +1,27 @@
+.navlinks{
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+
+}
+
+.navlinks > li{
+    padding: 5px 10px;
+}
+
+.sellbtn{
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    padding: 6px 14px;
+    border-top: 4px solid red;
+    border-left: 4px solid yellow;
+    border-right: 4px solid blue;
+    border-bottom: 4px solid green ;
+    outline: none;
+    font-weight: 400;
+    cursor: pointer;
+}

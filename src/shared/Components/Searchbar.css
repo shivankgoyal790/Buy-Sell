@@ -1,0 +1,21 @@
+.search-bar{
+    padding: 10px 5px;
+    outline: none;
+    border: none;
+    width: 90%;
+    font-size: 18px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.searchcontainer{
+    width: 50%;
+    display: flex;
+}
+
+.search-icon{
+    background-color: grey;
+    padding: 11px 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
