@@ -80,7 +80,7 @@ const Auth = () =>{
                     className="login-input" 
                     name="password" 
                     placeholder="Password" 
-                    value={Newvalue.password} 
+                    value={Newvalue.password}   
                     onChange={Inputhandler}>
                 </input>
                
