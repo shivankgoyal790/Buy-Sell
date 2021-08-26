@@ -4,6 +4,7 @@
     align-content: center;
     flex-wrap: wrap;
     padding: 10px 100px;
+    min-width: 250px;
 }
 
 .card-container > div{

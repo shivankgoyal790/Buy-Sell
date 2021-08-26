@@ -18,7 +18,7 @@ const Additem = () =>{
             
         </div>
         </div>
-    );
+    );  
 }
 
 export default Additem
