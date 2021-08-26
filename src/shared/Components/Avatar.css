@@ -1,0 +1,18 @@
+.avatar-container{
+    border-radius: 50%;  
+    background-color:khaki ;
+    cursor: pointer;
+
+}
+
+.avatar-container >img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
+.avatar-icon{
+    object-fit: contain;
+    font-size: 40px;
+}
