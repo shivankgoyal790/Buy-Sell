@@ -1,9 +1,9 @@
 .footer{
     width: 100%;
-    position: fixed;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    position: fixed;
     bottom: 0;  
     box-sizing: border-box;
     align-content: center;
