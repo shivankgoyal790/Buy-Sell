@@ -2,6 +2,9 @@ import React from "react"
 import "./Additem.css"
 
 const Additem = () =>{
+    const Additemhandler = () =>{
+        
+    }
     return(
         <div className="sell-flex-container">
         <div className="sell-container">
@@ -13,7 +16,7 @@ const Additem = () =>{
             <input type="text" placeholder="How Old is Your Product"></input>
             <input type="text" placeholder="Description"></input> 
             <input type="text" placeholder="location"></input>
-            <button className="submit_sellbtn" type="submit">Submit</button> 
+            <button className="submit_sellbtn" type="submit" onsubmit={Additemhandler}>Submit</button> 
             </div>
             
         </div>
