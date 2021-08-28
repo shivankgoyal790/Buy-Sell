@@ -57,10 +57,10 @@ const Auth = () =>{
         setisLoginmode(true)
     }
 
-    const Authsubmithandler = () =>{
+    const Authsubmithandler = (event) =>{
+        event.preventDefault();
         Auth.login();
-        History.push("/");
-        alert("you are logged");
+       History.push("/");
         
      }
     return(
