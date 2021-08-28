@@ -20,6 +20,29 @@ const App = () =>{
   const logout = useCallback(() => {
     setisloggedin(false);
   }, []);
+let routes;
+  if(!isloggedin){
+    routes = (
+      <Switch>
+        <Route path="/" exact><Allitems /></Route>
+        <Route path="/Sell" exact><Auth/></Route>
+       <Route path="/updateitem"><Auth/></Route>
+       <Route path="/:userid/userdetails"><Auth/></Route>
+      </Switch>
+    );
+  }
+ else {
+  routes = (  
+    <Switch>
+     <Route path="/" exact><Allitems /></Route>
+     <Route path="/Sell" exact><Additem/></Route>
+       <Route path="/updateitem"><Updateitem></Updateitem></Route>
+       <Route path="/:userid/userdetails"><Userdetails ></Userdetails></Route>
+    </Switch>
+  );
+}
+
+
   return(
     <AuthContext.Provider
     value={{ isLoggedIn: isloggedin, login: login, logout: logout }}
@@ -29,10 +52,7 @@ const App = () =>{
       <Route path="/Auth" exact><Auth/></Route> 
         <div>
        <Mainnav></Mainnav>
-       <Route path="/" exact><Allitems/></Route>
-       <Route path="/Sell" exact><Additem/></Route>
-       <Route path="/updateitem"><Updateitem></Updateitem></Route>
-       <Route path="/:userid/userdetails"><Userdetails ></Userdetails></Route>
+       <main>{routes}</main>
        <Mainfooter />
       </div>
       <Redirect to="/" />
