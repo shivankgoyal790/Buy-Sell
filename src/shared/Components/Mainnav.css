@@ -1,13 +1,15 @@
 .main-header{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center; 
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-color: #eeebeb;
-    width: 100%;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     box-sizing: border-box;
     padding: 10px 0px;
+    
+
     
 }
 
@@ -25,4 +27,19 @@
 
 body{
     margin: 0;
+}
+
+@media screen and (max-width:600px) {
+ 
+    .main-header{
+        flex-direction: column;
+        position: fixed;
+        top : 0;
+        left: 0;
+
+    }
+
+    html{
+        margin-top: 250px;
+    }
 }

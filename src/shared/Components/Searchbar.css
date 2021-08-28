@@ -20,3 +20,10 @@
     display: inline-block;
     cursor: pointer;
 }
+
+@media  screen and (max-width:600px) {
+    
+    .searchcontainer{
+        margin-top: 20px;
+    }
+}
