@@ -1,22 +1,41 @@
-const e = require("express");
+const { json } = require("body-parser");
 const mongoose = require("mongoose");
 const Items = require("../models/item-model");
 const Users = require("../models/user-model");
 
-const users = [{
-    id : "u1",
-    name : "shivank",
-    email: "goyal.shivank790@gmail.com",
-    password : "shivank119",
-    mobile : "7906558590",
-}]
+// const users = [{
+//     id : "u1",
+//     name : "shivank",
+//     email: "goyal.shivank790@gmail.com",
+//     password : "shivank119",
+//     mobile : "7906558590",
+// }]
 
-const getuserbyid = (req,res,next) =>{
-const userid = req.params.uid;
-const answer = users.filter(user => user.id === userid);
-res.json(answer);
-};
+// const getuserbyid = (req,res,next) =>{
+// const userid = req.params.uid;
+// const answer = users.filter(user => user.id === userid);
+// res.json(answer);
+// };
 
+const getuserbyid = async (req,res,next) =>{
+    const userid = req.params.uid;
+
+    let usercheck
+    try{
+        usercheck = await Users.findById(userid);
+        
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json("try again after some time");
+    }
+
+    if(!usercheck){
+        res.status(404).json("cannot find user"); 
+       }
+
+       res.status(201).json({user : usercheck.toObject({getters:true})})
+}
 // const login = (req,res,next) =>{
 //     const {email,password} = req.body;
 //     const user = users.find(emailid => emailid.email === email);
@@ -46,7 +65,7 @@ const login = async (req,res,next) =>{
             res.status(400).json("invalid password");
         }
     }
-    res.json("you are logged",{user:usercheck.toObject({getters:true})})
+    res.status(201).json({message : "you are logged",user:usercheck.toObject({getters:true})})
 
 }
 // const signup = (req,res,next) =>{
