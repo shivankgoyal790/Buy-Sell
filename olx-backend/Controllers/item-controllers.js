@@ -23,8 +23,15 @@ const Dummyitems = [
     }
 ];
 
-const getallitems = (req,res,next) =>{
-    res.json({Dummyitems});
+const getallitems = async (req,res,next) =>{
+    try{
+        const allitems = await Items.find({} ,"-creator" );
+        res.status(201).json({items : allitems})
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json('cannot get items');
+    }
 }
 
 const getitemsbyuserid  = (req,res,next) =>{
@@ -39,18 +46,36 @@ const getitembyid = (req,res,next) =>{
     res.json({answer : answer})
 }
 
-const createitem = (req,res,next) =>{
-    const {id,name,sellprice,age,description,location,creator} = req.body;
-    const createditem = {
-        id ,
+const createitem = async (req,res,next) =>{
+    const {name,sellprice,age,description,location} = req.body;
+   let createditem;
+    try{
+    createditem = await new Items({
+        
         name,
         sellprice,
         age,
         description,
         location,
-        creator
+        creator : ""
+    });
+    }catch(err){
+        console.log("cannot create item");
     }
-    Dummyitems.push(createditem);
+
+    try{
+        if(!createditem || createditem.name === "" || createditem.sellprice === "" || createditem.location === "" ){
+            throw new Error("fill complete data");
+        }
+        else{
+            await createditem.save();
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json("cannot create item");
+    }
+
     res.status(201).json({item : createditem});
 }
 
