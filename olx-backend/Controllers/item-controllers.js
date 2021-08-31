@@ -34,16 +34,49 @@ const getallitems = async (req,res,next) =>{
     }
 }
 
-const getitemsbyuserid  = (req,res,next) =>{
+
+const getitemsbyuserid  = async (req,res,next) =>{
     const userid = req.params.uid;
-    const answer = Dummyitems.find(user => { return user.creator === userid});
-    res.json({answer : answer})
+    let items
+    try{
+        items = await Items.find({creator : userid}); 
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json("try after some time")
+    }
+    if(!items){
+        res.status(404).json("no items found");
+    }
+
+    res.status(201).json({items:items});
+
+    // const answer = Dummyitems.find(user => { return user.creator === userid});
+    // res.json({answer : answer})
 }
 
-const getitembyid = (req,res,next) =>{
+
+
+const getitembyid = async (req,res,next) =>{
     const itemid = req.params.pid;
-    const answer = Dummyitems.find(item => {return item.id === itemid});
-    res.json({answer : answer})
+    let item
+    try{
+
+        item = await Items.findById(itemid)
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json("try again later");
+    }
+
+    if(!item){
+        res.status(400).json({message:"cannot find this item"});
+
+    }
+
+    res.status(201).json({item : item.toObject({getters :true})});
+    // const answer = Dummyitems.find(item => {return item.id === itemid});
+    // res.json({answer : answer})
 }
 
 const createitem = async (req,res,next) =>{
@@ -57,7 +90,7 @@ const createitem = async (req,res,next) =>{
         age,
         description,
         location,
-        creator : ""
+        creator : "612bbd25ed816ca407d6ee7b"
     });
     }catch(err){
         console.log("cannot create item");
@@ -79,33 +112,72 @@ const createitem = async (req,res,next) =>{
     res.status(201).json({item : createditem});
 }
 
-const updateitem = (req,res,next) =>{
+const updateitem = async (req,res,next) =>{
     const itemid = req.params.pid;
     const { name,sellprice,age,description,location} = req.body;
-    const itemtobeupdated = {...Dummyitems.find(item => item.id === itemid)};
-    const itemindex = Dummyitems.findIndex(p => p.pid === itemid)
+    let itemtobeupdated
+    try{
+
+        itemtobeupdated = await Items.findById(itemid);
+    }catch(err){
+        console.log(err);
+        res.status(401).json("try again");
+    }
     itemtobeupdated.name = name;
     itemtobeupdated.sellprice = sellprice;
     itemtobeupdated.age = age;
     itemtobeupdated.description = description;
     itemtobeupdated.location = location;
-    Dummyitems[itemindex] = itemtobeupdated;
-    try{
+    try{ 
+        await itemtobeupdated.save();
+      }catch(err) {
+        console.log(err);
+      }
+      
+      res.json( {item : itemtobeupdated.toObject({getters:true})}) 
+      
 
-        res.status(200).json({itemtobeupdated});
+    // const itemtobeupdated = {...Dummyitems.find(item => item.id === itemid)};
+    // const itemindex = Dummyitems.findIndex(p => p.pid === itemid)
+    // itemtobeupdated.name = name;
+    // itemtobeupdated.sellprice = sellprice;
+    // itemtobeupdated.age = age;
+    // itemtobeupdated.description = description;
+    // itemtobeupdated.location = location;
+    // Dummyitems[itemindex] = itemtobeupdated;
+    // try{
+
+    //     res.status(200).json({itemtobeupdated});
+    // }
+    // catch(err){
+    //     console.log(err);
+    // };
+
+}
+
+
+
+const deleteitem =async (req,res,next) =>{
+    const itemid = req.params.pid;
+    let deleteditem;
+    try{
+        deleteditem = await Items.findOneAndRemove(itemid);
     }
     catch(err){
         console.log(err);
-    };
+        res.status(400).json("try again later");
+    }
 
-}
-const deleteitem = (req,res,next) =>{
-    const itemid = req.params.pid;
-    const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
-   
-    Dummyitems[itemindex].remove();
+    if(!deleteditem){
+        res.status(404).json("cannot delete please try again");
+    }
     
-     res.json({message: 'deleted'});
+    res.status(201).json("item deleted");
+    // const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
+   
+    // Dummyitems[itemindex].remove();
+    
+    //  res.json({message: 'deleted'});
 }
 
 exports.getallitems = getallitems;
