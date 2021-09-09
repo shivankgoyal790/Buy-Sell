@@ -7,7 +7,7 @@ const Navbar = () =>{
     const auth = useContext(AuthContext);
     return(
     <ul className="navlinks">
-        <li><Avatar></Avatar></li>
+        <li><Avatar/></li>
         {!auth.isLoggedIn && (
         <li><NavLink to="/Auth"><u>Login</u></NavLink> </li>)}
         {auth.isLoggedIn && (<li  onClick={auth.logout}><u>Logout</u></li>)}

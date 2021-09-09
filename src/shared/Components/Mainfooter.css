@@ -1,51 +1,81 @@
-.footer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    bottom: 0;  
-    position: fixed;
-    box-sizing: border-box;
-    align-content: center;
-    box-shadow: 2px -2px 2px rgba(0,0,0,0.5);
-    background-color: #eeebeb;
-    justify-content: center;
-    color: black;
-    margin-top: 20px;   
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  bottom: 0;
+  box-sizing: border-box;
+  align-content: center;
+  box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  color: black;
+  margin-top: 20px;
+  padding: 20px;
+  background: url("https://thumbs.gfycat.com/LeanDismalAlaskanmalamute-size_restricted.gif");
+  background-repeat: no-repeat;
+  background-size:100%  100%;
+  border: none;
 }
 
-.footernavs{
-    list-style: none;
-    display: flex;
-    line-height: 1px;
-    flex-wrap: nowrap;
+.footernavs {
+  list-style: none;
+  display: flex;
+  line-height: 1px;
+  flex-wrap: nowrap;
 }
 
-.footernavs > li{
-    margin-top: 5px;
-    margin-left: 10px;
-    cursor: pointer;
+.footernavs > li {
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-family: verdana;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.footernavs li:hover {
+  transform: scale(1.2);
+  color: rgb(225, 228, 59);
 }
 
-.followlinks{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    line-height: -1;
-
+.followlinks {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  line-height: -1;
 }
 
 .followlinks > li {
-    margin: auto;
-    font-size: 20px;
-    cursor: pointer;
+  margin: auto;
+  font-size: 45px;
+  cursor: pointer;
+  color: white;
 }
 
-@media screen and (max-width:600px) {
-    
-    html{
-        margin-bottom: 100px;
-    }
+/* icons stylings */
+
+.i1:hover {
+  color: #4267b2;
+  transform: rotate(10deg);
+}
+.i2:hover {
+  color: #c73f78;
+  transform: rotate(10deg);
+}
+.i3:hover {
+  color: #5073b9;
+  transform: rotate(10deg);
+}
+.i4:hover {
+  color: #17459c;
+  transform: rotate(10deg);
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    margin-bottom: 100px;
+  }
 }
