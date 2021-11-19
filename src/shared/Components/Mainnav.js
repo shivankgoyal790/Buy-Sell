@@ -15,4 +15,4 @@ return(
 );  
 }
 
-export default Mainnav
+export default Mainnav;
