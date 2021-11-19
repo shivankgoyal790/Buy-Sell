@@ -16,7 +16,7 @@ const Additem = () =>{
             <input type="text" placeholder="How Old is Your Product"></input>
             <input type="text" placeholder="Description"></input> 
             <input type="text" placeholder="location"></input>
-            <button className="submit_sellbtn" type="submit" onsubmit={Additemhandler}>Submit</button> 
+            <button className="submit_sellbtn" type="submit" onSubmit={Additemhandler}>Submit</button> 
             </div>
             
         </div>
