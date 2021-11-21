@@ -1,7 +1,7 @@
 const express = require("express");
-const itemcontrollers = require("../Controllers/item-controllers")
+const itemcontrollers = require("../Controllers/item-controllers");
 const router = express.Router();
-
+const fileUpload = require("../fileupload");
 // const Dummyitems = [
 //     {
 //         id : "p1",
@@ -11,15 +11,15 @@ const router = express.Router();
 //         description : "2400km moved",
 //         location : "agra",
 //         creator : "u1"
-        
+
 //     }
 // ]
 
-router.get('/',itemcontrollers.getallitems);
-router.get("/:pid/item",itemcontrollers.getitembyid); 
-router.get("/:uid/useritems",itemcontrollers.getitemsbyuserid);
-router.post("/sell",itemcontrollers.createitem);
-router.patch("/:pid/edititem",itemcontrollers.updateitem);
-router.delete("/:pid/delete",itemcontrollers.deleteitem);
+router.get("/", itemcontrollers.getallitems);
+router.get("/:pid/item", itemcontrollers.getitembyid);
+router.get("/:uid/useritems", itemcontrollers.getitemsbyuserid);
+router.post("/sell", fileUpload.single("image"), itemcontrollers.createitem);
+router.patch("/:pid/edititem", itemcontrollers.updateitem);
+router.delete("/:pid/delete", itemcontrollers.deleteitem);
 
 module.exports = router;

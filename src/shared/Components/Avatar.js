@@ -1,16 +1,25 @@
-import React from "react"
-import "./Avatar.css"
+import React, { useContext } from "react";
+import "./Avatar.css";
 // import Logo from "../../images/avatar.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons"
-import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../shared/Authcontext";
+const Avatar = () => {
+  const Auth = useContext(AuthContext);
+  console.log(Auth.userId);
+  return (
+    <div className="avatar-container">
+      <i>
+        <Link
+          to={`/${Auth.userId}/userdetails`}
+          style={{ color: "black", textDecoration: "none" }}
+        >
+          <FontAwesomeIcon className="avatar-icon" icon={faUserCircle} />
+        </Link>
+      </i>
+    </div>
+  );
+};
 
-const Avatar = () =>{
-    return(
-        <div className="avatar-container">
-        <i><Link to="/u1/userdetails"><FontAwesomeIcon className="avatar-icon" icon={faUserCircle}/></Link></i>
-        </div>
-    );
-}
-
-export default Avatar
+export default Avatar;

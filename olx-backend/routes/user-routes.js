@@ -1,5 +1,5 @@
 const express = require("express");
-const userscontrollers = require("../Controllers/users-controllers")
+const userscontrollers = require("../Controllers/users-controllers");
 const router = express.Router();
 
 // const users = [{
@@ -10,8 +10,8 @@ const router = express.Router();
 //     mobile : "7906558590",
 // }]
 
-router.get('/:uid',userscontrollers.getuserbyid);
-router.post("/login",userscontrollers.login);
-router.post("/signup",userscontrollers.signup);
+router.get("/:uid", userscontrollers.getuserbyid);
+router.post("/login", userscontrollers.login);
+router.post("/signup", userscontrollers.signup);
 
-module.exports = router; 	
+module.exports = router;

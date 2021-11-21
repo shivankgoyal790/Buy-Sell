@@ -1,68 +1,63 @@
-.item-container{
-        border: 2px solid black;
-        border-radius: 6px;
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: 25px;
+.item-container {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 25px;
+}
+.price {
+  font-size: 26px;
+  font-weight: 500;
+}
+.buybtn {
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  padding: 6px 14px;
+  border-top: 4px solid red;
+  border-left: 4px solid yellow;
+  border-right: 4px solid blue;
+  border-bottom: 4px solid green;
+  outline: none;
+  font-weight: 400;
+  cursor: pointer;
+  width: 100px;
 }
 
-.product-img{
-    object-fit: contain;
-    width: 100%;
+.product-name {
+  padding: 0px 15px;
+  line-height: 0.5;
 }
 
-.price{
-    font-size: 26px;
-    font-weight: 500;
-}
-.buybtn{
-    color: white;
-    background-color: black;
-    border-radius: 50px;
-    padding: 6px 14px;
-    border-top: 4px solid red;
-    border-left: 4px solid yellow;
-    border-right: 4px solid blue;
-    border-bottom: 4px solid green ;
-    outline: none;
-    font-weight: 400;
-    cursor: pointer;
-    width: 100px;
-
+.details {
+  box-sizing: border-box;
+  padding: 0px 10px;
+  line-height: 1px;
+  border-left: 4px solid yellow;
 }
 
-.product-name{
-    padding: 0px 15px;
-    line-height: 0.5;
+.time,
+.product-details,
+.loaction {
+  font-weight: 500;
+  color: rgb(88, 88, 88);
+  font-size: 16px;
+  line-height: 8px;
 }
 
-.details{
-    box-sizing: border-box;
-    padding: 0px 10px;
-    line-height: 1px;
-    border-left: 4px solid yellow;
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  align-items: center;
 }
 
-.time, .product-details , .loaction{
-    font-weight: 500;
-    color: rgb(88, 88, 88);
-    font-size: 16px;
-    line-height: 8px;
-}
-
-.buttons-container{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 10px;
-    align-items: center;
-}
-
-.buybtn2{
-    background-color: white;
-    outline: none;
-    font-size: 14px;    
-    border: 2px solid black;
-    margin-right: 5px;
-    padding: 5px 5px;
-    cursor: pointer;
+.buybtn2 {
+  background-color: white;
+  outline: none;
+  font-size: 14px;
+  border: 2px solid black;
+  margin-right: 5px;
+  padding: 5px 5px;
+  cursor: pointer;
 }

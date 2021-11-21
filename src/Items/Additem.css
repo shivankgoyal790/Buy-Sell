@@ -1,69 +1,67 @@
-.item-details > input{
-    width: 90%;
-    padding: 10px 6px;
-    border: none;
-    margin-top: 15px;
+.item-details > input {
+  width: 90%;
+  padding: 10px 6px;
+  border: none;
+  margin-top: 15px;
 }
 
 /* .item-details > input[type = "file"]{
     display: none;
 } */
 
-.sell-flex-container{
-    width: 100%;
-    box-sizing: border-box;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f8f8f8;
+.sell-flex-container {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
 }
-.sell-container{
-    background: linear-gradient(to right, #43c6ac, #f8ffae);
-    width: 35%;   
-    border-radius: 6px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    min-width:300px;
-    
-}
-
-.item-details{
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    flex-direction: column;
-    padding-bottom: 20px;
+.sell-container {
+  background: linear-gradient(to right, #43c6ac, #f8ffae);
+  width: 35%;
+  border-radius: 6px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
 }
 
-.sell-logo{
-    border: 5px solid rgba(0, 0, 0,0.8);
-    padding: 4px 4px;
-    color: rgba(0, 0, 0,0.8);
-    display: inline-block;
+.item-details {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding-bottom: 20px;
 }
 
-h1{
-    margin: 0;
+.sell-logo {
+  border: 5px solid rgba(0, 0, 0, 0.8);
+  padding: 4px 4px;
+  color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
 }
 
-body{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.logo-container{
-    display: flex;
-    justify-content: center;    
+h1 {
+  margin: 0;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
 
-.submit_sellbtn{
-    background-color: rgba(29, 29, 29,0.8);
-    padding: 8px 14px;
-    outline: none;
-    border: none;
-    font-size: 16px;
-    color: white;
-    margin-top:  15px;
-    width: 45%;
-    cursor: pointer;
-
+.submit_sellbtn {
+  background-color: rgba(29, 29, 29, 0.8);
+  padding: 8px 14px;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin-top: 15px;
+  width: 45%;
+  cursor: pointer;
 }

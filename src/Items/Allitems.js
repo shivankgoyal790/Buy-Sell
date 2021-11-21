@@ -1,27 +1,54 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
 import Itemlist from "./Itemlist.js";
-
-const Allitems = () =>{
-    const Items = [
-        {
-            id :'p1',
-            name : 'BMW',
-            price : 760000,
-            details : 'BMW 5series 24000km',
-            age :'2017 model',
-            location: 'Agra'
-    
-        },
-        {
-            id :'p2',
-            name : 'audi',
-            price : 660000,
-            details : 'Audi A4 30000km',
-            age : '2016 model',
-            location: 'Agra'
+import Spinner from "../components/loadingspinner/Spinner";
+const Allitems = () => {
+  const [Items, setitems] = useState();
+  const [isloading, setisloading] = useState(false);
+  useEffect(() => {
+    const sendrequest = async () => {
+      setisloading(true);
+      try {
+        const response = await fetch("http://localhost:5000/api");
+        const responsedata = await response.json();
+        if (!response.ok) {
+          throw new Error(responsedata.message);
         }
-    ];
-    return <Itemlist items={Items} />
-}
+        setisloading(false);
+        setitems(responsedata.items);
+      } catch (err) {
+        setisloading(false);
+        console.log(err);
+        console.log("cannot get items");
+      }
+    };
 
-export default Allitems
+    sendrequest();
+  }, []);
+
+  const deleteitemhandler = (deleteid) => {
+    setisloading(true);
+    setitems((prevplaces) =>
+      prevplaces.filter((place) => place.id !== deleteid)
+    );
+    setisloading(false);
+  };
+  return (
+    <div className="position-relative w-100" id="itemback">
+      {isloading && (
+        <div className="w-100 text-center d-flex justify-content-center align-items-center mt-5 pt-5">
+          <Spinner />
+        </div>
+      )}
+      {Items && (
+        <Itemlist
+          items={Items}
+          heading="Popular Items"
+          filter="true"
+          ondeleteitem={deleteitemhandler}
+        />
+      )}
+    </div>
+  );
+};
+
+export default Allitems;

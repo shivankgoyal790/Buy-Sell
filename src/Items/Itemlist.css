@@ -1,14 +1,11 @@
-.card-container{
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
-    padding: 10px 100px;
-    min-width: 250px;
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
+  min-width: 250px;
 }
 
-.card-container > div{
-    width: 300px;
-
+.card-container > div {
+  width: 300px;
 }
-

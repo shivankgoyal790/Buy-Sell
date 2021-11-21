@@ -1,5 +1,5 @@
-const { json } = require("body-parser");
 const mongoose = require("mongoose");
+const { useParams } = require("react-router");
 const Items = require("../models/item-model");
 const Users = require("../models/user-model");
 
@@ -17,25 +17,23 @@ const Users = require("../models/user-model");
 // res.json(answer);
 // };
 
-const getuserbyid = async (req,res,next) =>{
-    const userid = req.params.uid;
+const getuserbyid = async (req, res, next) => {
+  const userid = req.params.uid;
 
-    let usercheck
-    try{
-        usercheck = await Users.findById(userid);
-        
-    }
-    catch(err){
-        console.log(err);
-        res.status(500).json("try again after some time");
-    }
+  let usercheck;
+  try {
+    usercheck = await Users.findById(userid);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("try again after some time");
+  }
 
-    if(!usercheck){
-        res.status(404).json("cannot find user"); 
-       }
+  if (!usercheck) {
+    res.status(404).json("cannot find user");
+  }
 
-       res.status(201).json({user : usercheck.toObject({getters:true})})
-}
+  res.status(201).json({ user: usercheck.toObject({ getters: true }) });
+};
 // const login = (req,res,next) =>{
 //     const {email,password} = req.body;
 //     const user = users.find(emailid => emailid.email === email);
@@ -44,30 +42,34 @@ const getuserbyid = async (req,res,next) =>{
 //     }
 //     else{
 //         res.status(400).json("check credentials")
-//     }     
+//     }
 // }
 
-const login = async (req,res,next) =>{
-    const {email,password} = req.body;
-    let usercheck
-    try{
-        usercheck = await Users.findOne({email:email})
-    }catch(err){
-        console.log(err);
-        res.status(400).json("try after some time");
-    }
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  let usercheck;
+  try {
+    usercheck = await Users.findOne({ email: email });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json("try after some time");
+  }
 
-    if(!usercheck){
-        res.status(400).json("invalid email")
+  if (!usercheck) {
+    res.status(501).json("invalid email");
+  } else {
+    if (usercheck.password !== password) {
+      res.status(501).json("invalid password");
     }
-    else{
-        if(usercheck.password !== password){
-            res.status(400).json("invalid password");
-        }
-    }
-    res.status(201).json({message : "you are logged",user:usercheck.toObject({getters:true})})
+  }
 
-}
+  if (usercheck && usercheck.password === password) {
+    res.status(201).json({
+      message: "you are logged",
+      user: usercheck,
+    });
+  }
+};
 // const signup = (req,res,next) =>{
 //   const {name ,email,password,mobile} = req.body;
 //   const newuser = {
@@ -80,33 +82,53 @@ const login = async (req,res,next) =>{
 //   res.status(200).json({newuser});
 // }
 
-const signup = async(req,res,next) =>{
-    const {name ,email,password,mobile} = req.body;
-    const newuser = await new Users(
-        {
-        name:name,
-        email:email,
-        password,
-        mobile,
-        items : []
-        }
-    )
+const signup = async (req, res, next) => {
+  const { name, email, password, mobile } = req.body;
+  const newuser = await new Users({
+    name: name,
+    email: email,
+    password,
+    mobile,
+    items: [],
+  });
 
-    try{
-        if(!newuser.password || newuser.name === "" || newuser.email === "" ){
-            throw new Error("check credential")
-        }
-        else{
-            await newuser.save();
-        }
+  try {
+    if (
+      !newuser.password ||
+      newuser.name === "" ||
+      newuser.email === "" ||
+      newuser.mobile === ""
+    ) {
+      res.status(501).json("check credential");
+    } else {
+      await newuser.save();
+      res.json("you are signed in");
     }
-    catch(err){
-        console.log(err);
-        res.status(404).json("cannot signup");
-    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json("cannot signup");
+  }
+};
 
-    res.json("you are signed in");
-} 
-exports.getuserbyid =getuserbyid;
+// const getuseritemsbyid = async (req, res, next) => {
+//   const userid = req.params.uid;
+//   let useritems;
+//   try {
+//     useritems = await Users.findById({ userid });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json("try again after some time");
+//   }
+//   if (!useritems) {
+//     res.status(404).json("cannot find user");
+//   }
+
+//   res.status(201).json({
+//     useritems: useritems.items.map((allitems) =>
+//       allitems.toObject({ getters: true })
+//     ),
+//   });
+// };
+exports.getuserbyid = getuserbyid;
 exports.login = login;
 exports.signup = signup;

@@ -2,183 +2,194 @@ const mongoose = require("mongoose");
 const Items = require("../models/item-model");
 const Users = require("../models/user-model");
 const Dummyitems = [
-    {
-        id : "p1",
-        name : "BMW",
-        sellprice : 760000,
-        age : "2017 mdoel",
-        description : "2400km moved",
-        location : "agra",
-        creator : "u1"
-        
-    },
-    {
-        id : "p2",
-        name : "BMW",
-        sellprice : 760000,
-        age : "2017 mdoel",
-        description : "2400km moved",
-        location : "agra",
-        creator : "u1"
-    }
+  {
+    id: "p1",
+    name: "BMW",
+    sellprice: 760000,
+    age: "2017 mdoel",
+    description: "2400km moved",
+    location: "agra",
+    creator: "u1",
+  },
+  {
+    id: "p2",
+    name: "BMW",
+    sellprice: 760000,
+    age: "2017 mdoel",
+    description: "2400km moved",
+    location: "agra",
+    creator: "u1",
+  },
 ];
 
-const getallitems = async (req,res,next) =>{
-    try{
-        const allitems = await Items.find({} ,"-creator" );
-        res.status(201).json({items : allitems})
+const getallitems = async (req, res, next) => {
+  let allitems;
+  try {
+    allitems = await Items.find({});
+  } catch (err) {
+    console.log(err);
+    res.status(404).json("cannot get items");
+  }
+  res.status(201).json({
+    items: allitems.map((allitems) => allitems.toObject({ getters: true })),
+  });
+};
+
+const getitemsbyuserid = async (req, res, next) => {
+  const userid = req.params.uid;
+  let answer;
+  try {
+    answer = await Users.findById(userid).populate("items");
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
+  try {
+    if (!answer) {
+      res.status(400).json({ message: "cannot find id" });
+      throw new Error("cannot show");
     }
-    catch(err){
-        console.log(err);
-        res.status(404).json('cannot get items');
-    }
-}
+  } catch (err) {
+    console.log(err);
+    console.log("shivank");
+  }
+  res.status(201).json({
+    items: answer.items.map((item) => item.toObject({ getters: true })),
+  });
 
+  // const answer = Dummyitems.find(user => { return user.creator === userid});
+  // res.json({answer : answer})
+};
 
-const getitemsbyuserid  = async (req,res,next) =>{
-    const userid = req.params.uid;
-    let items
-    try{
-        items = await Items.find({creator : userid}); 
-    }
-    catch(err){
-        console.log(err);
-        res.status(404).json("try after some time")
-    }
-    if(!items){
-        res.status(404).json("no items found");
-    }
+const getitembyid = async (req, res, next) => {
+  const itemid = req.params.pid;
+  let item;
+  try {
+    item = await Items.findById(itemid);
+  } catch (err) {
+    console.log(err);
+    res.status(404).json("try again later");
+  }
 
-    res.status(201).json({items:items});
+  if (!item) {
+    res.status(400).json({ message: "cannot find this item" });
+  }
 
-    // const answer = Dummyitems.find(user => { return user.creator === userid});
-    // res.json({answer : answer})
-}
+  res.status(201).json({ item: item.toObject({ getters: true }) });
+  // const answer = Dummyitems.find(item => {return item.id === itemid});
+  // res.json({answer : answer})
+};
 
-
-
-const getitembyid = async (req,res,next) =>{
-    const itemid = req.params.pid;
-    let item
-    try{
-
-        item = await Items.findById(itemid)
-    }
-    catch(err){
-        console.log(err);
-        res.status(404).json("try again later");
-    }
-
-    if(!item){
-        res.status(400).json({message:"cannot find this item"});
-
-    }
-
-    res.status(201).json({item : item.toObject({getters :true})});
-    // const answer = Dummyitems.find(item => {return item.id === itemid});
-    // res.json({answer : answer})
-}
-
-const createitem = async (req,res,next) =>{
-    const {name,sellprice,age,description,location} = req.body;
-   let createditem;
-    try{
+const createitem = async (req, res, next) => {
+  const { name, sellprice, age, description, location, creator } = req.body;
+  let createditem;
+  try {
     createditem = await new Items({
-        
-        name,
-        sellprice,
-        age,
-        description,
-        location,
-        creator : "612bbd25ed816ca407d6ee7b"
+      name,
+      sellprice,
+      age,
+      description,
+      location,
+      image: req.file.path,
+      creator,
     });
-    }catch(err){
-        console.log("cannot create item");
+  } catch (err) {
+    console.log("cannot create item");
+  }
+  let user;
+  try {
+    user = await Users.findById(creator);
+  } catch (err) {
+    res.json("sorry cannot add items");
+  }
+
+  if (!user) {
+    res.status(404).json("cannot find user");
+    console.log("cannot find user");
+  }
+  try {
+    if (
+      !createditem ||
+      createditem.name === "" ||
+      createditem.sellprice === "" ||
+      createditem.location === ""
+    ) {
+      console.log("ajksbfjkasbvfas");
+      throw new Error("fill complete data");
+    } else {
+      await createditem.save();
+      user.items.push(createditem);
+      await user.save();
     }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json("cannot create item");
+  }
+  console.log("hi");
+  res.status(201).json({ item: createditem });
+};
 
-    try{
-        if(!createditem || createditem.name === "" || createditem.sellprice === "" || createditem.location === "" ){
-            throw new Error("fill complete data");
-        }
-        else{
-            await createditem.save();
-        }
-    }
-    catch(err){
-        console.log(err);
-        res.status(404).json("cannot create item");
-    }
+const updateitem = async (req, res, next) => {
+  const itemid = req.params.pid;
+  const { name, sellprice, age, description, location } = req.body;
+  let itemtobeupdated;
+  try {
+    itemtobeupdated = await Items.findById(itemid);
+  } catch (err) {
+    console.log(err);
+    res.status(401).json("try again");
+  }
+  itemtobeupdated.name = name;
+  itemtobeupdated.sellprice = sellprice;
+  itemtobeupdated.age = age;
+  itemtobeupdated.description = description;
+  itemtobeupdated.location = location;
+  try {
+    await itemtobeupdated.save();
+  } catch (err) {
+    console.log(err);
+  }
 
-    res.status(201).json({item : createditem});
-}
+  res.json({ item: itemtobeupdated.toObject({ getters: true }) });
 
-const updateitem = async (req,res,next) =>{
-    const itemid = req.params.pid;
-    const { name,sellprice,age,description,location} = req.body;
-    let itemtobeupdated
-    try{
+  // const itemtobeupdated = {...Dummyitems.find(item => item.id === itemid)};
+  // const itemindex = Dummyitems.findIndex(p => p.pid === itemid)
+  // itemtobeupdated.name = name;
+  // itemtobeupdated.sellprice = sellprice;
+  // itemtobeupdated.age = age;
+  // itemtobeupdated.description = description;
+  // itemtobeupdated.location = location;
+  // Dummyitems[itemindex] = itemtobeupdated;
+  // try{
 
-        itemtobeupdated = await Items.findById(itemid);
-    }catch(err){
-        console.log(err);
-        res.status(401).json("try again");
-    }
-    itemtobeupdated.name = name;
-    itemtobeupdated.sellprice = sellprice;
-    itemtobeupdated.age = age;
-    itemtobeupdated.description = description;
-    itemtobeupdated.location = location;
-    try{ 
-        await itemtobeupdated.save();
-      }catch(err) {
-        console.log(err);
-      }
-      
-      res.json( {item : itemtobeupdated.toObject({getters:true})}) 
-      
+  //     res.status(200).json({itemtobeupdated});
+  // }
+  // catch(err){
+  //     console.log(err);
+  // };
+};
 
-    // const itemtobeupdated = {...Dummyitems.find(item => item.id === itemid)};
-    // const itemindex = Dummyitems.findIndex(p => p.pid === itemid)
-    // itemtobeupdated.name = name;
-    // itemtobeupdated.sellprice = sellprice;
-    // itemtobeupdated.age = age;
-    // itemtobeupdated.description = description;
-    // itemtobeupdated.location = location;
-    // Dummyitems[itemindex] = itemtobeupdated;
-    // try{
+const deleteitem = async (req, res, next) => {
+  const itemid = req.params.pid;
+  let deleteditem;
+  try {
+    deleteditem = await Items.findOneAndRemove(itemid);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json("try again later");
+  }
 
-    //     res.status(200).json({itemtobeupdated});
-    // }
-    // catch(err){
-    //     console.log(err);
-    // };
+  if (!deleteditem) {
+    res.status(404).json("cannot delete please try again");
+  }
 
-}
+  res.status(201).json("item deleted");
+  // const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
 
+  // Dummyitems[itemindex].remove();
 
-
-const deleteitem =async (req,res,next) =>{
-    const itemid = req.params.pid;
-    let deleteditem;
-    try{
-        deleteditem = await Items.findOneAndRemove(itemid);
-    }
-    catch(err){
-        console.log(err);
-        res.status(400).json("try again later");
-    }
-
-    if(!deleteditem){
-        res.status(404).json("cannot delete please try again");
-    }
-    
-    res.status(201).json("item deleted");
-    // const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
-   
-    // Dummyitems[itemindex].remove();
-    
-    //  res.json({message: 'deleted'});
-}
+  //  res.json({message: 'deleted'});
+};
 
 exports.getallitems = getallitems;
 exports.getitembyid = getitembyid;
