@@ -14,7 +14,7 @@ const Useritems = (props) => {
           throw new Error("cannot get details");
         }
         const responsedata = await response.json();
-        console.log(responsedata.items);
+
         setuseritems(responsedata.items);
       } catch (err) {
         console.log(err);

@@ -27,10 +27,18 @@ const Allitems = () => {
 
   const deleteitemhandler = (deleteid) => {
     setisloading(true);
-    setitems((prevplaces) =>
-      prevplaces.filter((place) => place.id !== deleteid)
-    );
+    setitems((previtem) => previtem.filter((item) => item.id !== deleteid));
     setisloading(false);
+  };
+
+  const locationfilterhandler = (loc) => {
+    setitems((previtems) => previtems.filter((item) => item.location === loc));
+  };
+  const typefilterhandler = (giventype) => {
+    console.log(giventype);
+    setitems((previtems) =>
+      previtems.filter((item) => item.type === giventype)
+    );
   };
   return (
     <div className="position-relative w-100" id="itemback">
@@ -45,6 +53,8 @@ const Allitems = () => {
           heading="Popular Items"
           filter="true"
           ondeleteitem={deleteitemhandler}
+          onfilterlocation={locationfilterhandler}
+          onfiltertype={typefilterhandler}
         />
       )}
     </div>

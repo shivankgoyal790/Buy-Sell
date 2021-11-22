@@ -1,0 +1,13 @@
+.bg-con {
+  background: linear-gradient(#2facdd, #b6fff5 25%, #fff 55% 100%);
+}
+
+.aboutus-bg {
+  background-image: url("../../images/unsplash.jpg");
+  background-position: center;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
+}

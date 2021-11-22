@@ -1,26 +1,25 @@
-const mongoose = require("mongoose");
 const Items = require("../models/item-model");
 const Users = require("../models/user-model");
-const Dummyitems = [
-  {
-    id: "p1",
-    name: "BMW",
-    sellprice: 760000,
-    age: "2017 mdoel",
-    description: "2400km moved",
-    location: "agra",
-    creator: "u1",
-  },
-  {
-    id: "p2",
-    name: "BMW",
-    sellprice: 760000,
-    age: "2017 mdoel",
-    description: "2400km moved",
-    location: "agra",
-    creator: "u1",
-  },
-];
+// const Dummyitems = [
+//   {
+//     id: "p1",
+//     name: "BMW",
+//     sellprice: 760000,
+//     age: "2017 mdoel",
+//     description: "2400km moved",
+//     location: "agra",
+//     creator: "u1",
+//   },
+//   {
+//     id: "p2",
+//     name: "BMW",
+//     sellprice: 760000,
+//     age: "2017 mdoel",
+//     description: "2400km moved",
+//     location: "agra",
+//     creator: "u1",
+//   },
+// ];
 
 const getallitems = async (req, res, next) => {
   let allitems;
@@ -81,7 +80,8 @@ const getitembyid = async (req, res, next) => {
 };
 
 const createitem = async (req, res, next) => {
-  const { name, sellprice, age, description, location, creator } = req.body;
+  const { name, sellprice, age, description, location, creator, type } =
+    req.body;
   let createditem;
   try {
     createditem = await new Items({
@@ -91,6 +91,7 @@ const createitem = async (req, res, next) => {
       description,
       location,
       image: req.file.path,
+      type,
       creator,
     });
   } catch (err) {
@@ -112,9 +113,9 @@ const createitem = async (req, res, next) => {
       !createditem ||
       createditem.name === "" ||
       createditem.sellprice === "" ||
-      createditem.location === ""
+      createditem.location === "" ||
+      createditem.type === ""
     ) {
-      console.log("ajksbfjkasbvfas");
       throw new Error("fill complete data");
     } else {
       await createditem.save();
@@ -131,7 +132,7 @@ const createitem = async (req, res, next) => {
 
 const updateitem = async (req, res, next) => {
   const itemid = req.params.pid;
-  const { name, sellprice, age, description, location } = req.body;
+  const { name, sellprice, age, description, location, type } = req.body;
   let itemtobeupdated;
   try {
     itemtobeupdated = await Items.findById(itemid);
@@ -144,6 +145,7 @@ const updateitem = async (req, res, next) => {
   itemtobeupdated.age = age;
   itemtobeupdated.description = description;
   itemtobeupdated.location = location;
+  itemtobeupdated.type = type;
   try {
     await itemtobeupdated.save();
   } catch (err) {

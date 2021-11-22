@@ -33,7 +33,14 @@ const Itemlist = (props) => {
           &emsp; Filter
         </button>
       )}
-      {open && <FilterSidebar show={open} onClick={closefilter} />}
+      {open && (
+        <FilterSidebar
+          show={open}
+          onClick={closefilter}
+          onSubmitlocation={props.onfilterlocation}
+          onSubmittype={props.onfiltertype}
+        />
+      )}
       <h1 className="text-center">{props.heading}</h1>
       <div className="container-fluid d-flex flex-wrap justify-content-center align-items-center gap-3 mt-5">
         {props.items.map((curr) => (

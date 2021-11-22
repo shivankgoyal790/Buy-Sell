@@ -3,6 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const userroutes = require("./routes/user-routes");
 const itemroutes = require("./routes/item-routes");
+const contactroutes = require("./routes/contact-routes");
+
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 
@@ -20,6 +22,7 @@ app.use((req, res, next) => {
 });
 app.use("/users", userroutes);
 app.use("/api", itemroutes);
+app.use("/", contactroutes);
 app.use((req, res, next) => {
   if (req.file) {
     fs.unlink(req.file.path, (err) => {

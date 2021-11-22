@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../shared/Authcontext";
 const Item = (props) => {
   const Auth = useContext(AuthContext);
-  console.log(props.creator);
   const deleteitemhandler = async () => {
     try {
       await fetch(`http://localhost:5000/api/${props.id}/delete`, {
@@ -23,14 +22,15 @@ const Item = (props) => {
     }
   };
   return (
-    <div className="card" style={{ height: "550px" }} id="carditem">
+    <div className="card" style={{ height: "550px" }}>
       <img
         className="card-img"
         src={`http://localhost:5000/${props.image}`}
-        alt="bmw"
+        alt="productimg"
+        height="300px"
       ></img>
       <div className="card-body">
-        <h2 className="product-name mt-4">{props.name}</h2>
+        <h2 className="product-name mt-2 mb-4 text-center">{props.name}</h2>
         <div className="details">
           <h1 className="price">
             <FontAwesomeIcon icon={faRupeeSign} style={{ fontSize: "20px" }} />

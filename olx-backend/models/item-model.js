@@ -6,6 +6,7 @@ const itemschema = new mongoose.Schema({
   description: { type: String },
   location: { type: String, required: true },
   image: { type: String, required: true },
+  type: { type: String, required: true },
   creator: { type: mongoose.Types.ObjectId, require: true, ref: "Users" },
 });
 

@@ -4,10 +4,14 @@
   font-family: "Ubuntu", sans-serif;
 }
 
-.background__card {
+.back-card {
   background: linear-gradient(#f4035f, #f4035f 25%, #fff 55% 100%);
+}
+.background__card {
   padding: 20px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .card {
@@ -25,7 +29,6 @@
 }
 
 .imgBx {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

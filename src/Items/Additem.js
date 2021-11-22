@@ -99,6 +99,8 @@ const Additem = () => {
   const Additemhandler = async (event) => {
     event.preventDefault();
     setisloading(true);
+    let e = document.getElementById("typedropdown");
+    let mytype = e.options[e.selectedIndex].text;
     try {
       const formdata = new FormData();
       formdata.append("name", Newvalue.name);
@@ -108,6 +110,7 @@ const Additem = () => {
       formdata.append("creator", Auth.userId);
       formdata.append("sellprice", Newvalue.price);
       formdata.append("age", Newvalue.old);
+      formdata.append("type", mytype);
       const response = await fetch("http://localhost:5000/api/sell", {
         method: "POST",
         body: formdata,
@@ -132,7 +135,7 @@ const Additem = () => {
             <p className="sell-logo">Buy&Sell</p>
           </h1>
           <form className="px-5" onSubmit={Additemhandler}>
-            <div class="form-group">
+            <div className="form-group">
               <Imageupload
                 id="image"
                 name="image"
@@ -194,7 +197,21 @@ const Additem = () => {
                 placeholder="How old is your item"
               />
             </div>
-
+            <label htmlFor="selecttype" className="mt-2">
+              Type
+            </label>
+            <select
+              className="form-select form-select-lg"
+              aria-label=".form-select-lg example"
+              name="selecttype"
+              id="typedropdown"
+              style={{ fontSize: "16px" }}
+            >
+              <option selected>Open this select menu</option>
+              <option value="automobiles">Automobiles</option>
+              <option value="mobiles">Mobiles</option>
+              <option value="Electronics">Electronics</option>
+            </select>
             <button type="submit" className="btn btn-danger text-center mt-4">
               Submit
             </button>

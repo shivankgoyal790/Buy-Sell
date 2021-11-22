@@ -24,6 +24,7 @@
   gap: 15px;
   line-height: 1px;
   flex-wrap: nowrap;
+  margin-left: 0% ;
 }
 
 .footernavs > li {
@@ -34,6 +35,15 @@
   color: rgb(255, 255, 255);
 }
 .footernavs li:hover {
+  transform: scale(1.2);
+  color: rgb(225, 228, 59);
+}
+
+.footernavs > li a {
+  text-decoration: none;
+}
+.footernavs > li a:hover {
+  text-decoration: none;
   transform: scale(1.2);
   color: rgb(225, 228, 59);
 }
@@ -86,4 +96,3 @@
     font-size: 14px;
   }
 }
-

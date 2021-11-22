@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../shared/Authcontext";
 const Avatar = () => {
   const Auth = useContext(AuthContext);
-  console.log(Auth.userId);
   return (
     <div className="avatar-container">
       <i>

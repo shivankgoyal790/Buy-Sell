@@ -8,21 +8,26 @@ import {
   faTelegram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Mainfooter = () => {
   return (
     <div className="footer mt-5 pt-5 w-100 overflow-hidden" id="mainfooter">
-      <div>
-        <ul className="footernavs">
-          <li><a href="/AboutUs">About Us</a></li>
+      <div className="text-center">
+        <ul className="footernavs list-unstyled">
+          <li>
+            <a href="/AboutUs">About Us</a>
+          </li>
           <li>Policy</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li>Help</li>
         </ul>
       </div>
 
       <div>
-        <ul className="followlinks">
+        <ul className="followlinks list-unstyled">
           <li>
             <FontAwesomeIcon className="i1" icon={faFacebook} />
           </li>
