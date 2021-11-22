@@ -1,43 +1,38 @@
 import {
-  faFacebook,
-  faTelegram,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+  faFileUpload,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Homepage.css";
-function Homepage() {
+
+const Homepage = (props) => {
+  console.log(props.the);
   return (
-    <div className="background__card" id="dealback">
+    <div className={`${props.the} background__card`}>
       <div className="card">
         <div className="imgBx">
           <img
-            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/B9FF/production/_117751674_satan-shoes1.jpg"
+            src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/master/pass/Transpo_G70_TA-518126.jpg"
             alt="avatar"
           />
         </div>
         <div className="content">
           <div className="details">
             <h2>
-              Nike Shoe
+              AUTOMOBILES
               <br />
             </h2>
           </div>
           <ul className="sci">
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faFacebook} />
+              <a href="/Sell">
+                <FontAwesomeIcon icon={faFileUpload} />
               </a>
             </li>
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-            </li>
-            <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTelegram} />
+              <a href="">
+                <FontAwesomeIcon icon={faShoppingCart} />
               </a>
             </li>
           </ul>
@@ -46,31 +41,26 @@ function Homepage() {
       <div className="card">
         <div className="imgBx">
           <img
-            src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/b89cb68c-2da6-4dac-9e64-b9c2ce7df166/wearallday-shoe-NpvSP5.png"
+            src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple_new-iphone-se-white_04152020_big.jpg.large.jpg"
             alt="avatar"
           />
         </div>
         <div className="content">
           <div className="details">
             <h2>
-              Nike Shoe
+              MOBILES
               <br />
             </h2>
           </div>
           <ul className="sci">
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faFacebook} />
+              <a href="/Sell">
+                <FontAwesomeIcon icon={faFileUpload} />
               </a>
             </li>
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-            </li>
-            <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTelegram} />
+              <a href="">
+                <FontAwesomeIcon icon={faShoppingCart} />
               </a>
             </li>
           </ul>
@@ -79,31 +69,26 @@ function Homepage() {
       <div className="card">
         <div className="imgBx">
           <img
-            src="https://4.imimg.com/data4/IF/HG/ANDROID-56647035/product-500x500.jpeg"
+            src="https://thumbs.dreamstime.com/b/many-used-modern-electronic-gadgets-use-white-floor-reuse-recycle-concept-top-view-153892483.jpg"
             alt="avatar"
           />
         </div>
         <div className="content">
           <div className="details">
             <h2>
-              Nike Shoe
+              ELECTRONICS
               <br />
             </h2>
           </div>
           <ul className="sci">
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faFacebook} />
+              <a href="/Sell">
+                <FontAwesomeIcon icon={faFileUpload} />
               </a>
             </li>
             <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-            </li>
-            <li>
-              <a href="as">
-                <FontAwesomeIcon icon={faTelegram} />
+              <a href="">
+                <FontAwesomeIcon icon={faShoppingCart} />
               </a>
             </li>
           </ul>
@@ -111,6 +96,6 @@ function Homepage() {
       </div>
     </div>
   );
-}
+};
 
 export default Homepage;

@@ -14,7 +14,7 @@ const Mainfooter = () => {
     <div className="footer mt-5 pt-5 w-100 overflow-hidden" id="mainfooter">
       <div>
         <ul className="footernavs">
-          <li>About Us</li>
+          <li><a href="/AboutUs">About Us</a></li>
           <li>Policy</li>
           <li>Contact Us</li>
           <li>Help</li>

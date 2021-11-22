@@ -22,7 +22,8 @@ const Navbar = () => {
       document.getElementById("mainheader").classList.remove("darkmode");
       document.getElementById("mainheader").classList.add("lightmode");
       document.getElementById("itemback").style.backgroundColor = "white";
-
+      document.getElementById("carditem").style.backgroundColor = "white";
+      document.getElementById("carditem").style.color = "black";
       document.getElementById("mainfooter").style.backgroundColor = "#eeebeb";
       setisdarkmode(false);
     }
