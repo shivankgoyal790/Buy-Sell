@@ -10,6 +10,7 @@ import Userdetails from "./Users/Userdetails";
 import { useCallback, useState } from "react";
 import { AuthContext } from "./shared/Authcontext";
 import Homepage from "./Deals/homepage/Homepage";
+import About from "./Deals/About";
 
 const App = () => {
   const [isloggedin, setisloggedin] = useState(false);
@@ -60,6 +61,8 @@ const App = () => {
             path=":userid/userdetails"
             element={isloggedin ? <Userdetails /> : <Auth />}
           />
+          <Route path="/AboutUs" element={<div><About/></div>} />
+          
         </Routes>
         <Mainfooter />
       </Router>
