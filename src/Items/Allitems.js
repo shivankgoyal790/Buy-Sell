@@ -3,6 +3,7 @@ import Itemlist from "./Itemlist.js";
 import Spinner from "../components/loadingspinner/Spinner";
 const Allitems = () => {
   const [Items, setitems] = useState();
+  const [maintaineditems, setmaintaineditems] = useState();
   const [isloading, setisloading] = useState(false);
   useEffect(() => {
     const sendrequest = async () => {
@@ -15,6 +16,7 @@ const Allitems = () => {
         }
         setisloading(false);
         setitems(responsedata.items);
+        setmaintaineditems(responsedata.items);
       } catch (err) {
         setisloading(false);
         console.log(err);
@@ -32,10 +34,12 @@ const Allitems = () => {
   };
 
   const locationfilterhandler = (loc) => {
+    setitems(maintaineditems);
     setitems((previtems) => previtems.filter((item) => item.location === loc));
   };
   const typefilterhandler = (giventype) => {
     console.log(giventype);
+    setitems(maintaineditems);
     setitems((previtems) =>
       previtems.filter((item) => item.type === giventype)
     );

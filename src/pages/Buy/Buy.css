@@ -8,3 +8,11 @@
   height: 80px;
   border-left: 8px solid yellow;
 }
+
+.paymentbtn span {
+  background-color: red !important;
+  background: none !important;
+  background-image: none !important;
+  color: black;
+  box-shadow: none;
+}

@@ -65,7 +65,7 @@ const App = () => {
           />
           <Route path="/AboutUs" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/buydetails" element={<Buy />} />
+          <Route path=":itemid/buyitem" element={<Buy />} />
         </Routes>
         <Mainfooter />
       </Router>

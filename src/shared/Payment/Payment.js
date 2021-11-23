@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 toast.configure();
 
 const Payment = (props) => {
   const [product] = useState({
-    name: "taj mahal",
-    price: 10000,
+    name: props.itemname,
+    price: props.price,
   });
 
   async function handleToken(token, addresses) {
@@ -31,9 +33,14 @@ const Payment = (props) => {
       token={handleToken}
       billingAddress
       shippingAddress
-      amount={1000}
-      name={"product name"}
-    />
+      amount={product.price}
+      name={product.name}
+    >
+      <button className="btn btn-primary" style={{ fontSize: "20px" }}>
+        <FontAwesomeIcon icon={faDollarSign} />
+        &nbsp; Buy This
+      </button>
+    </StripeCheckout>
   );
 };
 
