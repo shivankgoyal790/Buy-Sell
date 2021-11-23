@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import Payment from "../../shared/Payment/Payment";
 import "./Buy.css";
 const Buy = (props) => {
   return (
@@ -57,7 +58,7 @@ const Buy = (props) => {
           </div>
           <div className="buy-button">
             <div className="btn btn-primary ">
-              <h3>BUY ITEM</h3>
+              <h3><Payment/></h3>
             </div>
           </div>
         </div>
@@ -67,7 +68,9 @@ const Buy = (props) => {
       <div className="btn btn-success position-absolute top-35 end-0 m-1">
         <p>CHAT WITH SELLER</p>
       </div>
+      
     </div>
+    
   );
 };
 
