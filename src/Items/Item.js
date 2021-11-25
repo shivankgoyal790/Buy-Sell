@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
@@ -21,6 +21,30 @@ const Item = (props) => {
       console.log(err);
     }
   };
+
+  const [prodage,setProdage]=useState(0);
+  const [prodname,setProdname]=useState("");
+  const [prodprice,setProdprice]=useState(0);
+
+  const compareHandler=(event)=>{
+    
+    setProdname(props.name);
+    // console.log(prodage,prodname,prodprice);
+    setProdprice(props.price);
+    setProdage(props.age);
+
+    if(prodprice!==0 && prodname!=="" && prodage!==0){
+      props.onCompare(prodage,prodname,prodprice);
+    }
+
+    
+    // setProdage(0);
+    // setProdname("");
+    // setProdprice(0);
+  };
+
+
+  
   return (
     <div className="card" style={{ height: "550px" }}>
       <img
@@ -56,6 +80,8 @@ const Item = (props) => {
               &nbsp;Buy
             </Link>
           </button>
+          {/* anurag */}
+          <button onClick={compareHandler}>compare</button>
 
           {Auth.userId === props.creator && (
             <div>

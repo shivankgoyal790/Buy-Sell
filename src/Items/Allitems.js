@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Itemlist from "./Itemlist.js";
 import Spinner from "../components/loadingspinner/Spinner";
+import Compare from "../shared/Compare/Compare.js";
 const Allitems = () => {
   const [Items, setitems] = useState();
   const [maintaineditems, setmaintaineditems] = useState();
@@ -61,6 +62,8 @@ const Allitems = () => {
           onfiltertype={typefilterhandler}
         />
       )}
+
+      
     </div>
   );
 };

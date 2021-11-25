@@ -15,8 +15,9 @@ import About from "./pages/about/About";
 
 import Buy from "./pages/Buy/Buy";
 
-import Buy from "./components/Buy/Buy";
+// import Buy from "./components/Buy/Buy";
 import Policy from "./pages/policy/Policy";
+import Compare from "./shared/Compare/Compare";
 
 const App = () => {
   const [isloggedin, setisloggedin] = useState(false);
@@ -50,6 +51,7 @@ const App = () => {
               <div>
                 <Homepage />
                 <Allitems />
+                
               </div>
             }
           />
@@ -70,7 +72,7 @@ const App = () => {
           <Route path="/AboutUs" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path=":itemid/buyitem" element={<Buy />} />
-         <Route path="/buydetails" element={<Buy/>}/>
+          <Route path="/buydetails" element={<Buy/>}/>
           <Route path="/policy" element={<Policy />}/>
 
         </Routes>
