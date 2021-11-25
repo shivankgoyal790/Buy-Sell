@@ -22,14 +22,14 @@ const Item = (props) => {
     }
   };
   return (
-    <div className="card" style={{ height: "550px" }} >
+    <div className="card" style={{ height: "550px" }}>
       <img
         className="card-img"
         src={`http://localhost:5000/${props.image}`}
         alt="productimg"
         height="300px"
       ></img>
-      <div className="card-body" id="carditem" >
+      <div className="card-body" id="carditem">
         <h2 className="product-name mt-2 mb-4 text-center">{props.name}</h2>
         <div className="details">
           <h1 className="price">
@@ -43,10 +43,18 @@ const Item = (props) => {
             &nbsp;{props.location}
           </p>
         </div>
-        <div className="d-flex justify-content-between align-items-center">
+        <div
+          className="d-flex justify-content-between align-items-center myfont"
+          style={{ fontSize: "18px" }}
+        >
           <button className="buybtn">
-            <FontAwesomeIcon icon={faShoppingBag} />
-            &nbsp;Buy
+            <Link
+              to={`${props.id}/buyitem`}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <FontAwesomeIcon icon={faShoppingBag} />
+              &nbsp;Buy
+            </Link>
           </button>
 
           {Auth.userId === props.creator && (

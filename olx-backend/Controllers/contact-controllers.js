@@ -16,7 +16,7 @@ const sendmail = async (req, res, next) => {
     auth: {
       user: "goyal.shivank790@gmail.com",
       pass: "",
-    },  
+    },
   });
 
   var mailOptions = {

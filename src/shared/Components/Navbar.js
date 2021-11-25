@@ -10,21 +10,35 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Navbar = () => {
   const [isdarkmode, setisdarkmode] = useState(false);
   const changemode = () => {
+    let var1 = document.getElementById("mainheader");
+    let var2 = document.getElementById("carditem");
+    let var3 = document.getElementById("mainfooter");
     if (!isdarkmode) {
-      document.getElementById("mainheader").classList.remove("lightmode");
-      document.getElementById("mainheader").classList.add("darkmode");
-      document.getElementById("carditem").style.backgroundColor = "black";
-      document.getElementById("carditem").style.color = "white";
-      document.getElementById("mainfooter").style.backgroundColor = "black";
+      if (var1) {
+        var1.classList.remove("lightmode");
+        var1.classList.add("darkmode");
+      }
+      if (var2) {
+        var2.style.backgroundColor = "black";
+        var2.style.color = "white";
+      }
+      var3.style.backgroundColor = "black";
 
       setisdarkmode(true);
     } else {
-      document.getElementById("mainheader").classList.remove("darkmode");
-      document.getElementById("mainheader").classList.add("lightmode");
-      document.getElementById("itemback").style.backgroundColor = "white";
-      document.getElementById("carditem").style.backgroundColor = "white";
-      document.getElementById("carditem").style.color = "black";
-      document.getElementById("mainfooter").style.backgroundColor = "#eeebeb";
+      if (var1) {
+        var1.classList.remove("darkmode");
+        var1.classList.add("lightmode");
+      }
+      if (var2) {
+        var2.style.backgroundColor = "white";
+        var2.style.color = "black";
+      }
+
+      if (var3) {
+        var3.style.backgroundColor = "#eeebeb";
+      }
+
       setisdarkmode(false);
     }
   };

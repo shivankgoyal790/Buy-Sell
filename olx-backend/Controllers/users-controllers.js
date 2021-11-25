@@ -18,13 +18,13 @@ const Users = require("../models/user-model");
 // };
 
 const getuserbyid = async (req, res, next) => {
-  const userid = req.params.uid;
-
   let usercheck;
   try {
-    usercheck = await Users.findById(userid);
+    usercheck = await Users.findById(req.params.uid);
   } catch (err) {
+    console.log("hi");
     console.log(err);
+
     res.status(500).json("try again after some time");
   }
 
