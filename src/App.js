@@ -12,7 +12,11 @@ import { AuthContext } from "./shared/Authcontext";
 import Homepage from "./Deals/homepage/Homepage";
 import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
+
 import Buy from "./pages/Buy/Buy";
+
+import Buy from "./components/Buy/Buy";
+import Policy from "./pages/policy/Policy";
 
 const App = () => {
   const [isloggedin, setisloggedin] = useState(false);
@@ -66,6 +70,9 @@ const App = () => {
           <Route path="/AboutUs" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path=":itemid/buyitem" element={<Buy />} />
+         <Route path="/buydetails" element={<Buy/>}/>
+          <Route path="/policy" element={<Policy />}/>
+
         </Routes>
         <Mainfooter />
       </Router>

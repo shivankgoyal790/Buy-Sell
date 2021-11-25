@@ -18,11 +18,12 @@ const Mainfooter = () => {
           <li>
             <a href="/AboutUs">About Us</a>
           </li>
-          <li>Policy</li>
+          <li>
+          <Link to="/policy">Policy</Link></li>
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>Help</li>
+          {/* <li>Help</li> */}
         </ul>
       </div>
 
