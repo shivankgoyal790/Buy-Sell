@@ -5,6 +5,8 @@ import Spinner from "../components/loadingspinner/Spinner";
 const Allitems = () => {
   const [Items, setitems] = useState();
   const [maintaineditems, setmaintaineditems] = useState();
+  // const [filterarray1, setfilterarray1] = useState();
+  // const [filterarray2, setfilterarray2] = useState();
   const [isloading, setisloading] = useState(false);
   useEffect(() => {
     const sendrequest = async () => {
@@ -45,6 +47,28 @@ const Allitems = () => {
       previtems.filter((item) => item.type === giventype)
     );
   };
+
+  // useEffect(() => {
+  //   const filtersearch = () => {
+  //     let content1 = document.getElementById("searchitem").value;
+  //     let content2 = content1.toUpperCase();
+  //     setfilterarray1(Items);
+  //     if (filterarray1) {
+  //       filterarray1.map((curr) => {
+  //         if (curr.name.toUpperCase().indexOf(content2) > -1) {
+  //           setfilterarray2((prev) => {
+  //             if (filterarray2) {
+  //               filterarray2.push(...prev, curr);
+  //             }
+  //           });
+  //         }
+  //         return null;
+  //       });
+  //     }
+  //     setitems(filterarray2);
+  //   };
+  //   filtersearch();
+  // }, [Items, filterarray2, filterarray1]);
   return (
     <div className="position-relative w-100" id="itemback">
       {isloading && (
@@ -62,8 +86,6 @@ const Allitems = () => {
           onfiltertype={typefilterhandler}
         />
       )}
-
-      
     </div>
   );
 };

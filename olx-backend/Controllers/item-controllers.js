@@ -1,5 +1,7 @@
 const Items = require("../models/item-model");
 const Users = require("../models/user-model");
+const mongoose = require("mongoose");
+const fs = require("fs");
 // const Dummyitems = [
 //   {
 //     id: "p1",
@@ -173,19 +175,52 @@ const updateitem = async (req, res, next) => {
 
 const deleteitem = async (req, res, next) => {
   const itemid = req.params.pid;
-  let deleteditem;
+  // const deletedplace = {...DUMMY_PLACES.findIndex(p => p.id === placeid)}
+  // DUMMY_PLACES[deletedplace].remove();
+  // res.json({message: 'deleted'});
+  let answer;
+  let imagepath;
   try {
-    deleteditem = await Items.findOneAndRemove(itemid);
+    answer = await Items.findById(itemid).populate("creator");
+    imagepath = answer.image;
   } catch (err) {
     console.log(err);
-    res.status(400).json("try again later");
+    res.json("cannot delete 1st error");
   }
+  if (!answer) {
+    res.status(400).json("cannot find item");
+  } else {
+    try {
+      const sess = await mongoose.startSession();
+      await sess.startTransaction();
+      await answer.remove({ session: sess });
+      answer.creator.items.pull(answer);
+      await answer.creator.save({ session: sess });
+      await sess.commitTransaction();
+    } catch (err) {
+      console.log(err);
+      res.json("cannot delete item");
+      next();
+    }
 
-  if (!deleteditem) {
-    res.status(404).json("cannot delete please try again");
+    fs.unlink(imagepath, (err) => {
+      console.log(err);
+    });
+    res.json({ answer: "deleted item" });
   }
+  // let deleteditem;
+  // try {
+  //   deleteditem = await Items.findOneAndRemove(itemid);
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(400).json("try again later");
+  // }
 
-  res.status(201).json("item deleted");
+  // if (!deleteditem) {
+  //   res.status(404).json("cannot delete please try again");
+  // }
+
+  // res.status(201).json("item deleted");
   // const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
 
   // Dummyitems[itemindex].remove();

@@ -3,52 +3,56 @@ import "./Feedback.css";
 function Feedback() {
   return (
     <Fragment>
-      <div>
-        <div class="box feedback">
-          <form action="https://formspree.io/f/xjvlbyly" method="POST"  id="survey-form">
-            <div class="questions">
+      <div className="col-xl-7 col-md-1 col-12 mx-auto">
+        <div className="box feedback ">
+          <form
+            action="https://formspree.io/f/xjvlbyly"
+            method="POST"
+            id="survey-form"
+          >
+            <div className="questions">
               <label for="name">Name</label>
               <br />
               <input
                 type="text"
                 id="name-label"
-                class="inputcontainer"
+                className="py-3 form-control"
                 name="name"
                 placeholder="Enter your name"
               />
               <br />
             </div>
-            <div class="questions">
+            <div className="questions">
               <label for="email">Email</label>
               <br />
               <input
                 type="email"
                 id="email-label"
-                class="inputcontainer"
+                className="py-3 form-control"
                 name="email"
                 placeholder="Enter your Email"
               />
               <br />
             </div>
-            <div class="questions">
+            <div className="questions">
               <label for="age">Age</label>
               <br />
               <input
                 type="number"
                 id="age-label"
-                class="inputcontainer"
+                className="py-3 form-control"
                 name="age"
                 placeholder="Enter your Age"
               />
               <br />
 
-              <p class="almostlabel">
+              <p className="almostlabel">
                 Would you recommend Project: Arin to your friends?
               </p>
-              <div class="radiocontainer">
+              <div className="radiocontainer">
                 <label for="definitely">
                   <input
-                    class="input-radio"
+                    className="input-radio"
                     type="radio"
                     id="definitely"
                     name="enjoyment"
@@ -61,7 +65,7 @@ function Feedback() {
                 <label for="maybe">
                   <input
                     type="radio"
-                    class="input-radio"
+                    className="input-radio"
                     id="maybe"
                     name="enjoyment"
                     value="maybe"
@@ -73,7 +77,7 @@ function Feedback() {
                 <label for="nope">
                   <input
                     type="radio"
-                    class="input-radio"
+                    className="input-radio"
                     id="Nope"
                     name="enjoyment"
                     value="nope"
@@ -82,23 +86,28 @@ function Feedback() {
                 </label>
                 <br />
               </div>
-              <div class="dropdowncontainer">
-                <label for="features" class="almostlabel">
+              <div className="dropdowncontainer">
+                <label for="features" className="almostlabel">
                   Choose your favourite feature
                 </label>
                 <br />
-                <select name="features" id="dropdown">
+                <select
+                  className="form-select form-select-lg"
+                  aria-label=".form-select-lg example"
+                  name="selecttype"
+                  id="dropdown"
+                  style={{ fontSize: "16px" }}
+                >
                   <option value="puzzles">Buy Item</option>
                   <option value="gameplay">Sell Item</option>
                   <option value="aesthetics">Chat</option>
                 </select>
               </div>
-              <div class="checkboxcontainer">
-                
+              <div className="checkboxcontainer">
                 <br />
               </div>
-              <div class="textareacontainer">
-                <label for="openfeedback" class="almostlabel">
+              <div className="textareacontainer">
+                <label for="openfeedback" className="almostlabel">
                   Open Feedback:
                 </label>
                 <br />
@@ -108,11 +117,11 @@ function Feedback() {
                   placeholder="Enter your comment here..."
                 ></textarea>
               </div>
-              <div class="submitcontainer">
+              <div className="submitcontainer">
                 <button
                   type="submit"
                   id="submitid"
-                  class="submit-button"
+                  className="submit-button btn"
                   onclick="submitHandler()"
                 >
                   Submit

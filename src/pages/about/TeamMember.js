@@ -1,14 +1,8 @@
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { faBriefcase, faBuilding, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faBriefcase, faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./TeamMember.css";
-import { Link } from "react-router-dom";
 
 const TeamMember = (props) => {
   return (
@@ -20,20 +14,16 @@ const TeamMember = (props) => {
         <p>Jaypee Institute Of Information Technology</p>
         <h5>{props.designation}</h5>
         <div className="d-flex gap-4" style={{ fontSize: "22px" }}>
-          <a
-            href="https://www.jiit.ac.in"
-            style={{ color: "black" }}
-            target={"_blank"}
-          >
+          <a href="https://www.jiit.ac.in" style={{ color: "black" }}>
             <FontAwesomeIcon icon={faBuilding} />
           </a>
-          <a href={props.github} style={{ color: "black" }} target={"_blank"}>
+          <a href={props.github} style={{ color: "black" }}>
             <FontAwesomeIcon icon={faGithub} />
           </a>
-          <a href={props.linkedin} style={{ color: "black" }} target={"_blank"}>
+          <a href={props.linkedin} style={{ color: "black" }}>
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href={props.protfolio} style={{ color: "black" }} target={"_blank"}>
+          <a href={props.protfolio} style={{ color: "black" }}>
             <FontAwesomeIcon icon={faBriefcase} />
           </a>
         </div>
