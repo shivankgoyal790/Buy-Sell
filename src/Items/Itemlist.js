@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FilterSidebar from "../components/FilterSidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import Compare from "../shared/Compare/Compare";
 const Itemlist = (props) => {
   const [open, setopen] = useState(false);
 
@@ -13,6 +14,22 @@ const Itemlist = (props) => {
   };
   const closefilter = () => {
     setopen(false);
+  };
+
+  const [comparelist, setcomparelist] = useState([]);
+
+  const addCompareHandler = (prodAGE, prodNAME, prodPRICE) => {
+    setcomparelist((prevCompareList) => {
+      return [
+        ...prevCompareList,
+        {
+          name: prodNAME,
+          age: prodAGE,
+          price: prodPRICE,
+          id: Math.random().toString(),
+        },
+      ];
+    });
   };
 
   if (props)
@@ -61,9 +78,11 @@ const Itemlist = (props) => {
             location={curr.location}
             ondelete={props.ondeleteitem}
             creator={curr.creator}
+            onCompare={addCompareHandler}
           />
         ))}
       </div>
+      <Compare compareitems={comparelist} />
     </div>
   );
 };

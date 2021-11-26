@@ -12,7 +12,10 @@ import { AuthContext } from "./shared/Authcontext";
 import Homepage from "./Deals/homepage/Homepage";
 import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
+
 import Buy from "./pages/Buy/Buy";
+
+import Feedback from "./pages/about/Feedback";
 import Policy from "./pages/policy/Policy";
 
 const App = () => {
@@ -64,11 +67,16 @@ const App = () => {
             path=":userid/userdetails"
             element={isloggedin ? <Userdetails /> : <Auth />}
           />
-          <Route path="/AboutUs" element={<About />} />
+          <Route path="/aboutUs" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path=":itemid/buyitem" element={<Buy />} />
+
           <Route path="/buydetails" element={<Buy />} />
           <Route path="/policy" element={<Policy />} />
+
+          <Route path="/buydetails" element={<Buy />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
         <Mainfooter />
       </Router>

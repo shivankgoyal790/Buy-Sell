@@ -49,6 +49,22 @@ const About = () => {
         </div>
       </div>
       <div class="container mt-5">
+        <h1>Our Supervisor</h1>
+        <hr
+          className="border border-2 border-danger m-0 mt-1 ms-1"
+          style={{ width: "120px", opacity: "1" }}
+        ></hr>
+        <div className="w-100 d-flex gap-5 flex-wrap justify-content-center mt-5">
+          <TeamMember
+            name="Ms Amarjeet Kaur"
+            src="https://www.jiit.ac.in/sites/default/files/amarjeet%20kaur.jpg"
+            designation="Teacher"
+            protfolio="https://www.jiit.ac.in/amarjeet-kaur"
+            linkedin="https://www.linkedin.com/signup"
+          />
+        </div>
+      </div>
+      <div class="container mt-5">
         <h1>Our Team</h1>
         <hr
           className="border border-2 border-danger m-0 mt-1 ms-1"
@@ -60,18 +76,27 @@ const About = () => {
             enroll="19103124"
             src="https://avatars.githubusercontent.com/u/71492552?v=4"
             designation="Full Stack Developer & Designer"
+            github="https://github.com/shivankgoyal790"
+            linkedin="https://www.linkedin.com/signup"
+            protfolio=""
           />
           <TeamMember
             name="Anurag Singh"
             enroll="19103150"
             src="https://avatars.githubusercontent.com/u/63997049?s=400&u=9873b3e58be9ef3039a83c764bb40f468723cb8e&v=4"
             designation="React Developer"
+            github="https://github.com/anuragc10"
+            linkedin="https://www.linkedin.com/in/anurag-singh-a428a61ab/"
+            protfolio=""
           />
           <TeamMember
             name="Divyansh Bhargava"
             enroll="19103127"
-            src="https://i.pinimg.com/originals/d5/b0/4c/d5b04cc3dcd8c17702549ebc5f1acf1a.png"
-            designation="React Developer"
+            src="	https://avatars.githubusercontent.com/u/64961736?v=4"
+            designation="MERN Stack Developer"
+            github="https://github.com/Divyansh62"
+            linkedin="https://www.linkedin.com/signup"
+            protfolio=""
           />
         </div>
       </div>
