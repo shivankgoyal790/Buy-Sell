@@ -22,14 +22,14 @@ const Item = (props) => {
     }
   };
   return (
-    <div className="card" style={{ height: "550px" }}>
+    <div className="card" id="itemcardback" style={{ height: "550px" }}>
       <img
         className="card-img"
         src={`http://localhost:5000/${props.image}`}
         alt="productimg"
         height="300px"
       ></img>
-      <div className="card-body" id="carditem">
+      <div className="card-body">
         <h2 className="product-name mt-2 mb-4 text-center">{props.name}</h2>
         <div className="details">
           <h1 className="price">

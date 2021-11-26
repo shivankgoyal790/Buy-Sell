@@ -7,7 +7,6 @@ import React from "react";
 import "./Homepage.css";
 
 const Homepage = (props) => {
-  console.log(props.the);
   return (
     <div className="back-card pt-4">
       <h1 className="text-center">Top Deals</h1>
