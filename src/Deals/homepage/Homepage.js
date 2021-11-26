@@ -1,6 +1,7 @@
 import {
   faFileUpload,
   faShoppingCart,
+  faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -9,7 +10,7 @@ import "./Homepage.css";
 const Homepage = (props) => {
   console.log(props.the);
   return (
-    <div className="back-card pt-4">
+    <div className="back-card pt-4" id="backcard_dark">
       <h1 className="text-center">Top Deals</h1>
       <div className={`background__card`}>
         <div className="card">
@@ -29,7 +30,7 @@ const Homepage = (props) => {
             <ul className="sci">
               <li>
                 <a href="/Sell">
-                  <FontAwesomeIcon icon={faFileUpload} />
+                  <FontAwesomeIcon icon={faUpload} />
                 </a>
               </li>
               <li>
@@ -57,7 +58,7 @@ const Homepage = (props) => {
             <ul className="sci">
               <li>
                 <a href="/Sell">
-                  <FontAwesomeIcon icon={faFileUpload} />
+                  <FontAwesomeIcon icon={faUpload} />
                 </a>
               </li>
               <li>
@@ -85,7 +86,7 @@ const Homepage = (props) => {
             <ul className="sci">
               <li>
                 <a href="/Sell">
-                  <FontAwesomeIcon icon={faFileUpload} />
+                  <FontAwesomeIcon icon={faUpload} />
                 </a>
               </li>
               <li>

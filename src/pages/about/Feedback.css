@@ -1,0 +1,77 @@
+
+  .description {
+    font-style: italic;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  .box {
+    border-radius: 20px;
+  
+    padding: 30px 40px;
+    z-index: 0;
+  }
+.feedback{
+    background-color:rgb(143, 62, 89);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  #survey-form{
+    /* background: var(--color-darkblue-alpha); */
+    padding: 2.5rem 3rem;
+    border-radius: 0.9rem;
+  }
+  
+  label[for="name"],
+  label[for="email"],
+  label[for="age"] {
+    font-size: 21px;
+  }
+  .inputcontainer{
+    display: block;
+    box-sizing: border-box;
+    background-color: floralwhite;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    margin: 0.7rem 0rem;
+    border-radius: 5px;
+    color: black;
+  }
+  .almostlabel {
+    font-size: 21px;
+  }
+  .questions {
+    margin: 0 auto 0.5rem auto;
+    padding: 0.1rem;
+  }
+  .input-radio,
+  .input-checkbox {
+    /* display: inline-block; */
+    margin-right: 0.625rem;
+    margin-bottom: 1.4rem;
+  }
+ 
+  textarea {
+    min-height: 120px;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.625rem 0.625rem 0.625rem 0.625rem;
+    resize: vertical;
+  }
+  .submit-button {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--color-green);
+      color: inherit;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+  .submitcontainer{
+      background-color: greenyellow;
+      color: black;
+      margin-top: 10px;
+    }
