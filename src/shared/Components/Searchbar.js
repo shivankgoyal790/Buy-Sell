@@ -4,30 +4,36 @@ import { FontAwesomeIcon } from "../../../node_modules/@fortawesome/react-fontaw
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Navigate } from "react-router";
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const [searchvalue, setsearchvalue] = useState("");
   const searchbarhandler = (event) => {
     const value = event.target.value;
     setsearchvalue(value);
   };
+  // console.log(props.listItems);
+  
 
-  const filterhandler = () => {
-    Navigate("#itemback");
-  };
+
+  // console.warn(searchvalue);
+  // const filterhandler = () => {
+  //   Navigate("#itemback");
+  // };
   return (
     <div className="searchcontainer">
       <input
         className="search-bar"
         type="text"
         value={searchvalue}
-        onChange={searchbarhandler}
+        onChange={searchbarhandler.bind(this)}
         placeholder="Search Your Item Here"
         name="search"
         id="searchitem"
       ></input>
-      <i className="search-icon" onClick={filterhandler}>
+      <i className="search-icon" >
         <FontAwesomeIcon icon={faSearch} />
       </i>
+
+
     </div>
   );
 };

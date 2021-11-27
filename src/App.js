@@ -30,6 +30,11 @@ const App = () => {
     setisloggedin(false);
     setuserid(null);
   }, []);
+  const [iList, setIList] = useState([]);
+  const addListHandler=(items)=>{
+    setIList(items);
+    // console.log(iList);
+  }
 
   return (
     <AuthContext.Provider
@@ -41,7 +46,7 @@ const App = () => {
       }}
     >
       <Router>
-        <Mainnav />
+        <Mainnav iitems={iList}/>
         <Routes>
           <Route
             path="/"
@@ -49,7 +54,7 @@ const App = () => {
             element={
               <div>
                 <Homepage />
-                <Allitems />
+                <Allitems onMakeList={addListHandler} />
               </div>
             }
           />
