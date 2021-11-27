@@ -151,6 +151,7 @@ const Buy = (props) => {
                   &nbsp;
                   <p className="m-0">chat</p>
                 </button>
+                <a href="/vchat"><button className="btn btn-warning d-flex justify-content-center align-items-center">videochat</button></a>
               </div>
             </div>
           </div>
