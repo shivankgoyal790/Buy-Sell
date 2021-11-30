@@ -10,8 +10,16 @@ const Searchbar = (props) => {
     const value = event.target.value;
     setsearchvalue(value);
   };
-  // console.log(props.listItems);
   
+  // if(props.listItems!==undefined){
+  //   console.log(props.listItems.length);
+  // }
+  
+  
+  // const [items,setItems]=useState();
+  // const searchResultHandler=()=>{
+    
+  // }
 
 
   // console.warn(searchvalue);
@@ -29,7 +37,7 @@ const Searchbar = (props) => {
         name="search"
         id="searchitem"
       ></input>
-      <i className="search-icon" >
+      <i className="search-icon">
         <FontAwesomeIcon icon={faSearch} />
       </i>
 

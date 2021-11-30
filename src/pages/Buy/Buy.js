@@ -55,6 +55,13 @@ const Buy = (props) => {
   const openchat = () => {
     setopenchat(true);
   };
+
+  // me
+  const [enteredValue, setEnteredValude] = useState("");
+  const promoChangeHandler = (event) => {
+    setEnteredValude(event.target.value);
+  };
+
   return (
     <>
       <Chat show={isopenchat} onclose={closechat} />
@@ -78,7 +85,7 @@ const Buy = (props) => {
                     style={{ objectFit: "cover" }}
                   />
                 </Carousel.Item>
-                <Carousel.Item>
+                {/* <Carousel.Item>
                   <img
                     className=""
                     src="https://www.thoughtco.com/thmb/1g2-jnNGFo6SMikINMmHOmKsBMI=/3865x2576/filters:fill(auto,1)/sunrise-at-taj-mahal--agra--uttar-pradash--india-583682538-5b91840bc9e77c0050bdc67b.jpg"
@@ -97,7 +104,7 @@ const Buy = (props) => {
                     height="100%"
                     style={{ objectFit: "cover" }}
                   />
-                </Carousel.Item>
+                </Carousel.Item> */}
               </Carousel>
             </div>
 
@@ -116,7 +123,9 @@ const Buy = (props) => {
                   style={{ fontSize: "22px" }}
                 />
                 <span style={{ fontSize: "60px", fontWeight: "700" }}>
-                  {getitem.sellprice}
+                  {enteredValue === "PROMO30" && Math.round(getitem.sellprice * 0.7)}
+                  {enteredValue === "PROMO60" && Math.round(getitem.sellprice * 0.4)}
+                  {enteredValue !== "PROMO30" && enteredValue !== "PROMO60" && getitem.sellprice}
                 </span>
               </div>
 
@@ -151,7 +160,20 @@ const Buy = (props) => {
                   &nbsp;
                   <p className="m-0">chat</p>
                 </button>
-                <a href="/vchat"><button className="btn btn-warning d-flex justify-content-center align-items-center">videochat</button></a>
+                <a href="/vchat">
+                  <button className="btn btn-warning d-flex justify-content-center align-items-center">
+                    videochat
+                  </button>
+                </a>
+              </div>
+              <div className="promo">
+                <input
+                  placeholder="Promocode(PROMO30/60)"
+                  type="text"
+                  id="username"
+                  value={enteredValue}
+                  onChange={promoChangeHandler}
+                />
               </div>
             </div>
           </div>
