@@ -98,9 +98,9 @@ function Feedback() {
                   id="dropdown"
                   style={{ fontSize: "16px" }}
                 >
-                  <option value="puzzles">Buy Item</option>
-                  <option value="gameplay">Sell Item</option>
-                  <option value="aesthetics">Chat</option>
+                  <option value="BuyItem">Buy Item</option>
+                  <option value="SellItem">Sell Item</option>
+                  <option value="Chat">Chat</option>
                 </select>
               </div>
               <div className="checkboxcontainer">

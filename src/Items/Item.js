@@ -32,6 +32,7 @@ const Item = (props) => {
   const [prodprice, setProdprice] = useState(0);
 
   const compareHandler = (event) => {
+    event.preventDefault();
     setProdname(props.name);
     // console.log(prodage,prodname,prodprice);
     setProdprice(props.price);

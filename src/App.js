@@ -17,6 +17,8 @@ import Buy from "./pages/Buy/Buy";
 
 import Feedback from "./pages/about/Feedback";
 import Policy from "./pages/policy/Policy";
+import Vchat from "./Video/Vchat";
+
 
 const App = () => {
   const [isloggedin, setisloggedin] = useState(false);
@@ -30,6 +32,11 @@ const App = () => {
     setisloggedin(false);
     setuserid(null);
   }, []);
+  const [iList, setIList] = useState([]);
+  const addListHandler=(items)=>{
+    setIList(items);
+    // console.log(iList);
+  }
 
   return (
     <AuthContext.Provider
@@ -41,7 +48,7 @@ const App = () => {
       }}
     >
       <Router>
-        <Mainnav />
+        <Mainnav iitems={iList}/>
         <Routes>
           <Route
             path="/"
@@ -49,7 +56,7 @@ const App = () => {
             element={
               <div>
                 <Homepage />
-                <Allitems />
+                <Allitems onMakeList={addListHandler} />
               </div>
             }
           />
@@ -77,6 +84,7 @@ const App = () => {
           <Route path="/buydetails" element={<Buy />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/vchat" element={<Vchat />} />
         </Routes>
         <Mainfooter />
       </Router>

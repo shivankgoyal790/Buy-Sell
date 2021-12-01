@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Itemlist from "./Itemlist.js";
 import Spinner from "../components/loadingspinner/Spinner";
 
-const Allitems = () => {
+const Allitems = (props) => {
   const [Items, setitems] = useState();
   const [maintaineditems, setmaintaineditems] = useState();
   // const [filterarray1, setfilterarray1] = useState();
@@ -47,7 +47,8 @@ const Allitems = () => {
       previtems.filter((item) => item.type === giventype)
     );
   };
-
+  
+  props.onMakeList(Items);
   // useEffect(() => {
   //   const filtersearch = () => {
   //     let content1 = document.getElementById("searchitem").value;
@@ -69,6 +70,7 @@ const Allitems = () => {
   //   };
   //   filtersearch();
   // }, [Items, filterarray2, filterarray1]);
+  
   return (
     <div className="position-relative w-100" id="itemback">
       {isloading && (
