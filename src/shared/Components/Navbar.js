@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isdarkmode, setisdarkmode] = useState(false);
   const changemode = () => {
     let var1 = document.getElementById("mainheader");
-    let var2 = document.getElementById("itemlistback");
+    let var2 = document.getElementById("itemcardback");
     let var3 = document.getElementById("mainfooter");
     if (!isdarkmode) {
       if (var1) {
@@ -19,12 +19,14 @@ const Navbar = () => {
         var1.classList.add("darkmode");
       }
       if (var2) {
-        let card1 = var2.querySelector(".card");
-        console.log(card1[1]);
-        console.log(card1[2]);
-        if (card1) {
-          card1.style.backgroundColor = "black";
-        }
+        var2.style.backgroundColor = "black";
+        var2.style.color = "white";
+        // let card1 = var2.querySelector(".card");
+        // console.log(card1[1]);
+        // console.log(card1[2]);
+        // if (card1) {
+        //   card1.style.backgroundColor = "black";
+        // }
       }
       var3.style.backgroundColor = "black";
 
