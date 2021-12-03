@@ -21,12 +21,6 @@ const Navbar = () => {
       if (var2) {
         var2.style.backgroundColor = "black";
         var2.style.color = "white";
-        // let card1 = var2.querySelector(".card");
-        // console.log(card1[1]);
-        // console.log(card1[2]);
-        // if (card1) {
-        //   card1.style.backgroundColor = "black";
-        // }
       }
       var3.style.backgroundColor = "black";
 

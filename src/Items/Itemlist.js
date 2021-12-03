@@ -6,7 +6,6 @@ import FilterSidebar from "../components/FilterSidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import Compare from "../shared/Compare/Compare";
-import { ContactlessOutlined } from "@material-ui/icons";
 const Itemlist = (props) => {
   const [open, setopen] = useState(false);
 
@@ -32,7 +31,6 @@ const Itemlist = (props) => {
       ];
     });
   };
-  
 
   if (props)
     if (props.items.length === 0) {
@@ -42,8 +40,6 @@ const Itemlist = (props) => {
         </div>
       );
     }
-
-  
 
   return (
     <div className="position-relative">

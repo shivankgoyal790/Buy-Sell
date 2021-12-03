@@ -8,8 +8,6 @@
 }
 
 .user-container {
-  width: 40%;
-  min-width: 250px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -55,4 +53,9 @@
   font-weight: 700;
   width: 60%;
   cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+  .detail_box {
+    width: 90%;
+  }
 }

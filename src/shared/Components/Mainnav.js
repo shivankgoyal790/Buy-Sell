@@ -10,7 +10,7 @@ const Mainnav = (props) => {
       <h1 className="logo">
         <Link to="/">Buy&Sell</Link>
       </h1>
-      <Searchbar listItems={props.iitems}></Searchbar>
+      <Searchbar onsearchvalue={props.onsearchfilter}></Searchbar>
       <Navbar></Navbar>
     </div>
   );

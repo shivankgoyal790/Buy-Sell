@@ -27,7 +27,7 @@ const FilterSidebar = (props) => {
   };
   return (
     <div
-      className="position-fixed d-flex flex-column align-items-center px-2 py-5 col-lg-3 col-md-5 col-sm-8 col-12 bg-white shadow-lg h-100"
+      className="position-fixed mt-5 d-flex flex-column align-items-center px-2 py-5 col-lg-3 col-md-5 col-sm-8 col-12 bg-white shadow-lg h-100"
       style={{
         top: "0",
         left: "0",

@@ -19,14 +19,14 @@ const Mainfooter = () => {
             <a href="/aboutUs">About Us</a>
           </li>
           <li>
-          <Link to="/policy">Policy</Link></li>
+            <Link to="/policy">Policy</Link>
+          </li>
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
           <li>
             <Link to="/feedback">Feedback</Link>
           </li>
-          {/* <li>Help</li> */}
         </ul>
       </div>
 

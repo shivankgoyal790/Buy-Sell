@@ -15,7 +15,7 @@ const sendmail = async (req, res, next) => {
     service: "gmail",
     auth: {
       user: "goyal.shivank790@gmail.com",
-      pass: "shivank@119",
+      pass: "",
     },
   });
 

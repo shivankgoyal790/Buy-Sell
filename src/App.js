@@ -19,7 +19,6 @@ import Feedback from "./pages/about/Feedback";
 import Policy from "./pages/policy/Policy";
 import Vchat from "./Video/Vchat";
 
-
 const App = () => {
   const [isloggedin, setisloggedin] = useState(false);
   const [userId, setuserid] = useState(null);
@@ -32,12 +31,11 @@ const App = () => {
     setisloggedin(false);
     setuserid(null);
   }, []);
-  const [iList, setIList] = useState([]);
-  const addListHandler=(items)=>{
-    setIList(items);
-    // console.log(iList);
-  }
+  const [searchbarvalue, setsearchbarvalue] = useState([]);
 
+  const setallitemsfiltervalue = (value) => {
+    setsearchbarvalue(value);
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -48,7 +46,7 @@ const App = () => {
       }}
     >
       <Router>
-        <Mainnav iitems={iList}/>
+        <Mainnav onsearchfilter={setallitemsfiltervalue} />
         <Routes>
           <Route
             path="/"
@@ -56,7 +54,7 @@ const App = () => {
             element={
               <div>
                 <Homepage />
-                <Allitems onMakeList={addListHandler} />
+                <Allitems mysearchvalue={searchbarvalue} />
               </div>
             }
           />

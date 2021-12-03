@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Searchbar.css";
 import { FontAwesomeIcon } from "../../../node_modules/@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Navigate } from "react-router";
 
 const Searchbar = (props) => {
   const [searchvalue, setsearchvalue] = useState("");
@@ -10,22 +9,12 @@ const Searchbar = (props) => {
     const value = event.target.value;
     setsearchvalue(value);
   };
-  
-  // if(props.listItems!==undefined){
-  //   console.log(props.listItems.length);
-  // }
-  
-  
-  // const [items,setItems]=useState();
-  // const searchResultHandler=()=>{
-    
-  // }
+  const filtersearchhandler = () => {
+    const value = searchvalue.toUpperCase();
+    props.onsearchvalue(value);
+    window.scrollTo(0, 700);
+  };
 
-
-  // console.warn(searchvalue);
-  // const filterhandler = () => {
-  //   Navigate("#itemback");
-  // };
   return (
     <div className="searchcontainer">
       <input
@@ -37,11 +26,9 @@ const Searchbar = (props) => {
         name="search"
         id="searchitem"
       ></input>
-      <i className="search-icon">
+      <i className="search-icon" onClick={filtersearchhandler}>
         <FontAwesomeIcon icon={faSearch} />
       </i>
-
-
     </div>
   );
 };

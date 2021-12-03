@@ -1,23 +1,26 @@
 import {
-  faCommentDollar,
+  faComment,
   faMapMarkerAlt,
   faPhoneAlt,
   faRupeeSign,
+  faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { useParams } from "react-router";
 import Payment from "../../shared/Payment/Payment";
 import Spinner from "../../components/loadingspinner/Spinner";
 import "./Buy.css";
 import Chat from "../../shared/chat/Chat";
+import { AuthContext } from "../../shared/Authcontext";
 const Buy = (props) => {
   const itemid = useParams().itemid;
   const [isloading, setisloading] = useState(false);
   const [seller, setseller] = useState();
   const [isopenchat, setopenchat] = useState(false);
   const [getitem, setgetitem] = useState();
+  const auth = useContext(AuthContext);
   useEffect(() => {
     const getitem = async () => {
       try {
@@ -53,7 +56,8 @@ const Buy = (props) => {
     setopenchat(false);
   };
   const openchat = () => {
-    setopenchat(true);
+    if (auth.isLoggedIn) setopenchat(true);
+    else alert("please Login to use this feature");
   };
 
   // me
@@ -123,9 +127,13 @@ const Buy = (props) => {
                   style={{ fontSize: "22px" }}
                 />
                 <span style={{ fontSize: "60px", fontWeight: "700" }}>
-                  {enteredValue === "PROMO30" && Math.round(getitem.sellprice * 0.7)}
-                  {enteredValue === "PROMO60" && Math.round(getitem.sellprice * 0.4)}
-                  {enteredValue !== "PROMO30" && enteredValue !== "PROMO60" && getitem.sellprice}
+                  {enteredValue === "PROMO30" &&
+                    Math.round(getitem.sellprice * 0.7)}
+                  {enteredValue === "PROMO60" &&
+                    Math.round(getitem.sellprice * 0.4)}
+                  {enteredValue !== "PROMO30" &&
+                    enteredValue !== "PROMO60" &&
+                    getitem.sellprice}
                 </span>
               </div>
 
@@ -156,17 +164,25 @@ const Buy = (props) => {
                     fontSize: "20px",
                   }}
                 >
-                  <FontAwesomeIcon icon={faCommentDollar} />
+                  <FontAwesomeIcon icon={faComment} />
                   &nbsp;
                   <p className="m-0">chat</p>
                 </button>
-                <a href="/vchat">
-                  <button className="btn btn-warning d-flex justify-content-center align-items-center">
-                    videochat
+                <a href={auth.isLoggedIn ? "/vchat" : "/Auth"}>
+                  <button
+                    className="btn btn-warning d-flex justify-content-center align-items-center text-white"
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faVideo} />
+                    &nbsp;
+                    <p className="m-0">video</p>
                   </button>
                 </a>
               </div>
               <div className="promo">
+                <h6>Apply Promocode</h6>
                 <input
                   placeholder="Promocode(PROMO30/60)"
                   type="text"

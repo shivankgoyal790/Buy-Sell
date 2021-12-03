@@ -34,17 +34,12 @@ const Item = (props) => {
   const compareHandler = (event) => {
     event.preventDefault();
     setProdname(props.name);
-    // console.log(prodage,prodname,prodprice);
     setProdprice(props.price);
     setProdage(props.age);
 
     if (prodprice !== 0 && prodname !== "" && prodage !== 0) {
       props.onCompare(prodage, prodname, prodprice);
     }
-
-    // setProdage(0);
-    // setProdname("");
-    // setProdprice(0);
   };
 
   return (

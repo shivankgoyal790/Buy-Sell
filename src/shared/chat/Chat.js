@@ -29,7 +29,7 @@ const Chat = (props) => {
           ></div>
 
           <br />
-          <div className="d-flex">
+          <div className="d-flex align-items-end justify-content-center">
             <textarea
               id="message"
               className="form-control rounded-0 d-flex align-items-center"
@@ -37,10 +37,7 @@ const Chat = (props) => {
               placeholder="Type Something Here"
             ></textarea>
             <br />
-            <button
-              id="send"
-              className="btn btn-success px-3 d-flex align-items-center gap-2 rounded-0"
-            >
+            <button id="send" className="btn btn-success px-3 gap-2 rounded-0">
               <FontAwesomeIcon icon={faPaperPlane} /> Send
             </button>
           </div>

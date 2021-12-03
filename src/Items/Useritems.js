@@ -3,7 +3,6 @@ import Itemlist from "./Itemlist";
 
 const Useritems = (props) => {
   const [useritems, setuseritems] = useState();
-  console.log(props.userId);
   useEffect(() => {
     const getuseritems = async () => {
       try {

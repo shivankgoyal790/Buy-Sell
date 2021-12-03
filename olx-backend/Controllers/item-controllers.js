@@ -2,26 +2,6 @@ const Items = require("../models/item-model");
 const Users = require("../models/user-model");
 const mongoose = require("mongoose");
 const fs = require("fs");
-// const Dummyitems = [
-//   {
-//     id: "p1",
-//     name: "BMW",
-//     sellprice: 760000,
-//     age: "2017 mdoel",
-//     description: "2400km moved",
-//     location: "agra",
-//     creator: "u1",
-//   },
-//   {
-//     id: "p2",
-//     name: "BMW",
-//     sellprice: 760000,
-//     age: "2017 mdoel",
-//     description: "2400km moved",
-//     location: "agra",
-//     creator: "u1",
-//   },
-// ];
 
 const getallitems = async (req, res, next) => {
   let allitems;
@@ -57,9 +37,6 @@ const getitemsbyuserid = async (req, res, next) => {
   res.status(201).json({
     items: answer.items.map((item) => item.toObject({ getters: true })),
   });
-
-  // const answer = Dummyitems.find(user => { return user.creator === userid});
-  // res.json({answer : answer})
 };
 
 const getitembyid = async (req, res, next) => {
@@ -77,8 +54,6 @@ const getitembyid = async (req, res, next) => {
   }
 
   res.status(201).json({ item: item.toObject({ getters: true }) });
-  // const answer = Dummyitems.find(item => {return item.id === itemid});
-  // res.json({answer : answer})
 };
 
 const createitem = async (req, res, next) => {
@@ -155,29 +130,10 @@ const updateitem = async (req, res, next) => {
   }
 
   res.json({ item: itemtobeupdated.toObject({ getters: true }) });
-
-  // const itemtobeupdated = {...Dummyitems.find(item => item.id === itemid)};
-  // const itemindex = Dummyitems.findIndex(p => p.pid === itemid)
-  // itemtobeupdated.name = name;
-  // itemtobeupdated.sellprice = sellprice;
-  // itemtobeupdated.age = age;
-  // itemtobeupdated.description = description;
-  // itemtobeupdated.location = location;
-  // Dummyitems[itemindex] = itemtobeupdated;
-  // try{
-
-  //     res.status(200).json({itemtobeupdated});
-  // }
-  // catch(err){
-  //     console.log(err);
-  // };
 };
 
 const deleteitem = async (req, res, next) => {
   const itemid = req.params.pid;
-  // const deletedplace = {...DUMMY_PLACES.findIndex(p => p.id === placeid)}
-  // DUMMY_PLACES[deletedplace].remove();
-  // res.json({message: 'deleted'});
   let answer;
   let imagepath;
   try {
@@ -208,24 +164,6 @@ const deleteitem = async (req, res, next) => {
     });
     res.json({ answer: "deleted item" });
   }
-  // let deleteditem;
-  // try {
-  //   deleteditem = await Items.findOneAndRemove(itemid);
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(400).json("try again later");
-  // }
-
-  // if (!deleteditem) {
-  //   res.status(404).json("cannot delete please try again");
-  // }
-
-  // res.status(201).json("item deleted");
-  // const itemindex = { ...Dummyitems.findIndex(p => p.id === itemid)};
-
-  // Dummyitems[itemindex].remove();
-
-  //  res.json({message: 'deleted'});
 };
 
 exports.getallitems = getallitems;
