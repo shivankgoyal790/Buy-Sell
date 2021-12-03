@@ -1,0 +1,28 @@
+/* .video-container-main {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  margin: 40px;
+} */
+
+.myId {
+  background: linear-gradient(to top, #43c6ac, #f8ffae);
+}
+
+.call-button {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* .video-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10rem;
+  margin-left: 10rem;
+} */
+
+.caller {
+  text-align: center;
+  color: #fff;
+}

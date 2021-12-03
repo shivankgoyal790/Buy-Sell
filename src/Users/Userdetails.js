@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Userdetails.css";
 import { useParams } from "react-router-dom";
 import Useritems from "../Items/Useritems";
-// const User = [
-//   {
-//     id: "u1",
-//     name: "shivank",
-//     email: "goyal.shivank790@gmail.com",
-//     mobile: "7906558590",
-//   },
-// ];
+import { AuthContext } from "../shared/Authcontext";
 const Userdetails = () => {
   const userid = useParams().userid;
-  //   const [loadeduser, setloadeduser] = useState();
-
+  const auth = useContext(AuthContext);
   const [details, setdetails] = useState({
     name: "",
     email: "",
@@ -39,6 +31,23 @@ const Userdetails = () => {
 
     getuserdetails();
   }, [userid]);
+
+  const updateuserdetails = async () => {
+    try {
+      await fetch(`http://localhost:5000/users/${auth.userId}/updateuser`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: details.name,
+          email: details.email,
+          mobile: details.mobile,
+        }),
+      });
+      console.log("user profile updated");
+    } catch (err) {
+      console.log("cannot update details try again");
+    }
+  };
   const changedetailshandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -70,7 +79,7 @@ const Userdetails = () => {
   return (
     <div className="userdetails mt-5">
       <h1 className="mb-3">Your Account</h1>
-      <div className="user-container">
+      <div className="user-container col-lg-5 col-md-9 col-11 mx-auto">
         <div>
           <span>
             <FontAwesomeIcon icon={faPen} />
@@ -108,7 +117,7 @@ const Userdetails = () => {
           ></input>
         </div>
 
-        <button type="submit" className="changebtn">
+        <button type="submit" className="changebtn" onClick={updateuserdetails}>
           Change
         </button>
       </div>

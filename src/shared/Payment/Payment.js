@@ -33,7 +33,7 @@ const Payment = (props) => {
       token={handleToken}
       billingAddress
       shippingAddress
-      amount={product.price}
+      number={product.price}
       name={product.name}
     >
       <button className="btn btn-primary" style={{ fontSize: "20px" }}>

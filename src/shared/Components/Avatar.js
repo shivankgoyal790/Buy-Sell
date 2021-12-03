@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./Avatar.css";
-// import Logo from "../../images/avatar.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

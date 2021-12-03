@@ -1,23 +1,26 @@
 import {
-  faCommentDollar,
+  faComment,
   faMapMarkerAlt,
   faPhoneAlt,
   faRupeeSign,
+  faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { useParams } from "react-router";
 import Payment from "../../shared/Payment/Payment";
 import Spinner from "../../components/loadingspinner/Spinner";
 import "./Buy.css";
 import Chat from "../../shared/chat/Chat";
+import { AuthContext } from "../../shared/Authcontext";
 const Buy = (props) => {
   const itemid = useParams().itemid;
   const [isloading, setisloading] = useState(false);
   const [seller, setseller] = useState();
   const [isopenchat, setopenchat] = useState(false);
   const [getitem, setgetitem] = useState();
+  const auth = useContext(AuthContext);
   useEffect(() => {
     const getitem = async () => {
       try {
@@ -53,8 +56,16 @@ const Buy = (props) => {
     setopenchat(false);
   };
   const openchat = () => {
-    setopenchat(true);
+    if (auth.isLoggedIn) setopenchat(true);
+    else alert("please Login to use this feature");
   };
+
+  // me
+  const [enteredValue, setEnteredValude] = useState("");
+  const promoChangeHandler = (event) => {
+    setEnteredValude(event.target.value);
+  };
+
   return (
     <>
       <Chat show={isopenchat} onclose={closechat} />
@@ -78,7 +89,7 @@ const Buy = (props) => {
                     style={{ objectFit: "cover" }}
                   />
                 </Carousel.Item>
-                <Carousel.Item>
+                {/* <Carousel.Item>
                   <img
                     className=""
                     src="https://www.thoughtco.com/thmb/1g2-jnNGFo6SMikINMmHOmKsBMI=/3865x2576/filters:fill(auto,1)/sunrise-at-taj-mahal--agra--uttar-pradash--india-583682538-5b91840bc9e77c0050bdc67b.jpg"
@@ -97,7 +108,7 @@ const Buy = (props) => {
                     height="100%"
                     style={{ objectFit: "cover" }}
                   />
-                </Carousel.Item>
+                </Carousel.Item> */}
               </Carousel>
             </div>
 
@@ -116,7 +127,13 @@ const Buy = (props) => {
                   style={{ fontSize: "22px" }}
                 />
                 <span style={{ fontSize: "60px", fontWeight: "700" }}>
-                  {getitem.sellprice}
+                  {enteredValue === "PROMO30" &&
+                    Math.round(getitem.sellprice * 0.7)}
+                  {enteredValue === "PROMO60" &&
+                    Math.round(getitem.sellprice * 0.4)}
+                  {enteredValue !== "PROMO30" &&
+                    enteredValue !== "PROMO60" &&
+                    getitem.sellprice}
                 </span>
               </div>
 
@@ -147,10 +164,32 @@ const Buy = (props) => {
                     fontSize: "20px",
                   }}
                 >
-                  <FontAwesomeIcon icon={faCommentDollar} />
+                  <FontAwesomeIcon icon={faComment} />
                   &nbsp;
                   <p className="m-0">chat</p>
                 </button>
+                <a href={auth.isLoggedIn ? "/vchat" : "/Auth"}>
+                  <button
+                    className="btn btn-warning d-flex justify-content-center align-items-center text-white"
+                    style={{
+                      fontSize: "20px",
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faVideo} />
+                    &nbsp;
+                    <p className="m-0">video</p>
+                  </button>
+                </a>
+              </div>
+              <div className="promo">
+                <h6>Apply Promocode</h6>
+                <input
+                  placeholder="Promocode(PROMO30/60)"
+                  type="text"
+                  id="username"
+                  value={enteredValue}
+                  onChange={promoChangeHandler}
+                />
               </div>
             </div>
           </div>

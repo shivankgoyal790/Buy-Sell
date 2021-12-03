@@ -116,10 +116,8 @@ const Auth = () => {
         }
         const responsedata = await response.json();
         Auth.login(responsedata.user._id);
-        console.log(responsedata);
         setisloading(false);
         History("/");
-        console.log("loggedin");
       } catch (err) {
         setisloading(false);
         seterror(true);
@@ -145,7 +143,6 @@ const Auth = () => {
           throw new Error("cannot signup");
         }
         Auth.login();
-        console.log("signed in");
         setisloading(false);
         History("/");
       } catch (err) {

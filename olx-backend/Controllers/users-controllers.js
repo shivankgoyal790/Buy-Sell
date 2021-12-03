@@ -1,21 +1,4 @@
-const mongoose = require("mongoose");
-const { useParams } = require("react-router");
-const Items = require("../models/item-model");
 const Users = require("../models/user-model");
-
-// const users = [{
-//     id : "u1",
-//     name : "shivank",
-//     email: "goyal.shivank790@gmail.com",
-//     password : "shivank119",
-//     mobile : "7906558590",
-// }]
-
-// const getuserbyid = (req,res,next) =>{
-// const userid = req.params.uid;
-// const answer = users.filter(user => user.id === userid);
-// res.json(answer);
-// };
 
 const getuserbyid = async (req, res, next) => {
   let usercheck;
@@ -34,16 +17,6 @@ const getuserbyid = async (req, res, next) => {
 
   res.status(201).json({ user: usercheck.toObject({ getters: true }) });
 };
-// const login = (req,res,next) =>{
-//     const {email,password} = req.body;
-//     const user = users.find(emailid => emailid.email === email);
-//     if(user && user.password === password){
-//         res.status(200).json("you are logged");
-//     }
-//     else{
-//         res.status(400).json("check credentials")
-//     }
-// }
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -70,17 +43,29 @@ const login = async (req, res, next) => {
     });
   }
 };
-// const signup = (req,res,next) =>{
-//   const {name ,email,password,mobile} = req.body;
-//   const newuser = {
-//       name,
-//       email,
-//       password,
-//       mobile
-//   }
-//   users.push(newuser);
-//   res.status(200).json({newuser});
-// }
+
+const updateuser = async (req, res, next) => {
+  const userid = req.params.uid;
+  const { name, email, mobile } = req.body;
+  let usertobeupdated;
+  try {
+    usertobeupdated = await Users.findById(userid);
+  } catch (err) {
+    console.log(err);
+    res.status(401).json("try again");
+  }
+  usertobeupdated.name = name;
+  usertobeupdated.email = email;
+  usertobeupdated.mobile = mobile;
+
+  try {
+    await usertobeupdated.save();
+  } catch (err) {
+    console.log(err);
+  }
+
+  res.json({ user: usertobeupdated.toObject({ getters: true }) });
+};
 
 const signup = async (req, res, next) => {
   const { name, email, password, mobile } = req.body;
@@ -109,26 +94,7 @@ const signup = async (req, res, next) => {
     res.status(404).json("cannot signup");
   }
 };
-
-// const getuseritemsbyid = async (req, res, next) => {
-//   const userid = req.params.uid;
-//   let useritems;
-//   try {
-//     useritems = await Users.findById({ userid });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json("try again after some time");
-//   }
-//   if (!useritems) {
-//     res.status(404).json("cannot find user");
-//   }
-
-//   res.status(201).json({
-//     useritems: useritems.items.map((allitems) =>
-//       allitems.toObject({ getters: true })
-//     ),
-//   });
-// };
+exports.updateuser = updateuser;
 exports.getuserbyid = getuserbyid;
 exports.login = login;
 exports.signup = signup;

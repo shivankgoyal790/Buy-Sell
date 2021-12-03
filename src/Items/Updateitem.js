@@ -88,7 +88,6 @@ const Updateitem = () => {
           location: Newvalue.location,
         }),
       });
-      console.log("item updated");
       history("/");
     } catch (err) {
       console.log("cannot update item try again");

@@ -2,12 +2,11 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faBriefcase, faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "./TeamMember.css";
 
 const TeamMember = (props) => {
   return (
     <div className="card" style={{ height: "620px" }}>
-      <img className="card-img userImage" alt="user" src={props.src}></img>
+      <img className="card-img" alt="user" src={props.src} height="398px" />
       <div className="card-body">
         <h1>{props.name}</h1>
         <p>{props.enroll}</p>
