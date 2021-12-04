@@ -11,7 +11,7 @@ const Homepage = (props) => {
     <div className="back-card pt-4" id="backcard_dark">
       <h1 className="text-center">Top Deals</h1>
       <div className={`background__card`}>
-        <div className="card">
+        <div className="card" id="dealcard">
           <img
             className="mx-auto mt-4 shadow-lg"
             src="https://media.wired.com/photos/5d09594a62bcb0c9752779d9/master/pass/Transpo_G70_TA-518126.jpg"
@@ -44,7 +44,7 @@ const Homepage = (props) => {
             </ul>
           </div>
         </div>
-        <div className="card">
+        <div className="card" id="dealcard1">
           <img
             className="mx-auto mt-4 shadow-lg"
             src="https://www.imagemobiles.com/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-30-at-9.37.51-AM.jpeg"
@@ -77,7 +77,7 @@ const Homepage = (props) => {
             </ul>
           </div>
         </div>
-        <div className="card">
+        <div className="card" id="dealcard2">
           <img
             className="mx-auto mt-4 shadow-lg"
             src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2018/10/sites-cheap-electronics.jpg"

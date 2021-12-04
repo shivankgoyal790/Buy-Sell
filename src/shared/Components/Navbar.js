@@ -13,6 +13,10 @@ const Navbar = () => {
     let var1 = document.getElementById("mainheader");
     let var2 = document.getElementById("itemcardback");
     let var3 = document.getElementById("mainfooter");
+    let var4 =document.getElementById("dealcard");
+    let var5 =document.getElementById("dealcard1");
+    let var6 =document.getElementById("dealcard2");
+
     if (!isdarkmode) {
       if (var1) {
         var1.classList.remove("lightmode");
@@ -21,6 +25,12 @@ const Navbar = () => {
       if (var2) {
         var2.style.backgroundColor = "black";
         var2.style.color = "white";
+        var4.style.backgroundColor="black";
+        var4.style.color = "white";
+        var5.style.backgroundColor="black";
+        var5.style.color = "white";
+        var6.style.backgroundColor="black";
+        var6.style.color = "white";
       }
       var3.style.backgroundColor = "black";
 
@@ -33,6 +43,12 @@ const Navbar = () => {
       if (var2) {
         var2.style.backgroundColor = "white";
         var2.style.color = "black";
+        var4.style.backgroundColor="white";
+        var4.style.color = "black";
+        var5.style.backgroundColor="white";
+        var5.style.color = "black";
+        var6.style.backgroundColor="white";
+        var6.style.color = "black";
       }
 
       if (var3) {
